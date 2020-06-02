@@ -20,9 +20,11 @@ connectは、プログラミングスクール卒業生が継続して学習を�
 ・スクール卒業後の独学は不安なのでコミュニティに入りたい
 ・スクール卒業生でチームを作りたい
 
-## 設計書
+### ER図
+https://app.diagrams.net/#G1q76P8xzwoXN2qG14Bh_LQ6IGR5vPokxW
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1GOdSAppRX0EeGDAbTtKwBdFE9tHEGjqEXr-7fRIk6lw/edit#gid=0
+
 
 
