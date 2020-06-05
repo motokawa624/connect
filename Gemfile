@@ -87,5 +87,6 @@ gem 'rubocop'
 # 管理者機能
 gem 'activeadmin'
 
-
+# 環境変数
+gem 'dotenv-rails'
 
