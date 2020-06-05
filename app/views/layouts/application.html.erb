@@ -10,6 +10,35 @@
   </head>
 
   <body>
+    <header class="header">
+      <nav class='nav navbar-nav navbar-left' >
+        <span><%= link_to 'connect', home_path %></span>
+      </nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "チームを作る", new_team_path %></li>
+          <li><%= link_to "メンバー", users_path %></li>
+          <li><%= link_to "チーム", home_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "アバウト", new_team_path %></li>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", user_session_path %></li>
+        <% end %>
+      </ul>
+
+
+
+
+
+
+    </header>
+    <% if notice %>
+     <p class="alert alert-notice"><%= notice %></p>
+   <% end %>
+   <% if alert %>
+     <p class="alert alert-error"><%= alert %></p>
+   <% end %>
     <%= yield %>
   </body>
 </html>

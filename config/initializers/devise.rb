@@ -9,6 +9,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'd7082d2e674967a4896a7ebfc10cd4df9ce94eb865da21bbbc3ef5fc1698a1c99cd12b4a80bb199d9359fb4d0de0b4d53874a427243049a2e2a98bb5d515ef76'
+  # git hubログイン
+  config.omniauth :github, ENV["GITHUB_ID"], ENV["GITHUB_SECRET"], scope: 'user,public_repo'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.

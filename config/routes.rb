@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+
   root 'home#top'
 
   resources :users, only: [:index, :show, :edit, :update] do
@@ -9,7 +13,8 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followed', as: 'followers'
   end
 
-  resources :teams
+  resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy]
+  get 'home' => 'teams#index'
   get 'myteam' => 'teams#myteam'
   resources :post_comments, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
