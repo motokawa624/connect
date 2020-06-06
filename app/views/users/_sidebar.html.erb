@@ -1,0 +1,27 @@
+<table>
+	<caption>table title and/or explanatory text</caption>
+
+		<tr>
+			<%= attachment_image_tag(user, :prfile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+		</tr>
+
+		<tr>
+			<%= user.name%>
+		</tr>
+		<tr>
+			<%= link_to user.follow.count, "フォロー", user_follows_path(user)%>
+		</tr>
+		<tr>
+			<%= link_to user.follower.count, "フォロワー", user_followers_path(user)%>
+		</tr>
+		<tr>
+			<p>お気に入り</p>
+		</tr>
+		<tr>
+			<%= link_to "マイページ", user_path(current_user), class: "btn btn-primary" %>
+		</tr>
+		<tr>
+			<%= link_to "マイチーム", myteam_path(current_user.belong), class: "btn btn-primary" %>
+		</tr>
+
+</table>
