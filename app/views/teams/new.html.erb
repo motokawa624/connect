@@ -1,0 +1,27 @@
+<div class="container">
+	<div class = "row">
+
+			<%= form_for(@team, url: teams_path) do |f| %>
+				<div class="col-md-12">
+				  <%= f.label :name, "チーム名" %>
+				  <%= f.text_field :name %>
+		    </div>
+			  <%= f.label :place, "エリア" %>
+			  <%= f.text_field :place %>
+
+			  <%= f.label :team_imege %>
+			  <%= f.attachment_field :team_image %>
+
+			  <%= f.label :introduction, "説明"%>
+			  <%= f.text_area :introduction %>
+
+			  <%= f.label :url, "github url"%>
+			  <%= f.text_field :url %>
+
+			  <%= f.label :tag_list %>
+			  <%= f.text_field :tag_list, value: @team.tag_list.join(',') %>
+			  <%= f.submit "新規登録", class: 'btn btn-primary col-xs-12'%>
+			<% end %>
+
+	</div>
+</div>
