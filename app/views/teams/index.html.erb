@@ -1,2 +1,7 @@
 index.html.erb
-<%= render "users/sidebar", user: current_user %>
+ <% @teams.each do |team| %>
+ <%= team.team_image %>
+ 	<%= team.name %>
+ 	<%= team.belong.count %>
+<% end %>
+

@@ -1,13 +1,15 @@
 class TeamsController < ApplicationController
 	def index
-
+		@teams = Team.all
 	end
 
 	def show
-
+		@team = Team.find(params[:id])
+		user = current_user
 	end
 
 	def new
+		@team = Team.new
 
 	end
 
@@ -20,7 +22,13 @@ class TeamsController < ApplicationController
 	end
 
   def create
-
+  	@team = Team.new(team_params)
+  	if @team.save
+      redirect_to @team
+    else
+      @teams = Team.all
+      render 'index'
+    end
   end
 
   def destroy
@@ -30,6 +38,6 @@ class TeamsController < ApplicationController
 	private
 
 	  def team_params
-	  	params.require(:team).permit(:name, :is_status, :place, :introduction, :team_image, :url)
+	  	params.require(:team).permit(:name, :is_status, :place, :introduction, :team_image, :url, :tag_list)
 	  end
 end

@@ -1,0 +1,15 @@
+<%= @team.name %>
+<% if @team.users = current_user %>
+	<%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
+    <%= link_to '削除する', @team, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_book_#{@team.id}"%>
+ <% end %>
+<%= @team.team_image %>
+メンバー
+<%= @team.users.name %>
+募集ステータス
+<% if @teams.is_status == false %>
+募集中
+<% else %>
+参加中
+<% end %>
+<%= @team.introduction %>
