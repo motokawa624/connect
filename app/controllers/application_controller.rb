@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :place]) # 新規登録時(sign_up時)にnameとplaceいうキーのパラメーターを追加で許可する
+  end
 end

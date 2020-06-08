@@ -17,6 +17,16 @@
           </div>
 
           <div class="field">
+            <div class="col-md-3"></div> <!-- 空div -->
+            <div class="col-md-2">
+              <%= f.label :place, "エリア" %><br />
+            </div>
+            <div class="col-md-7">
+              <%= f.select :place, User.places.keys.to_a, {} %>
+            </div>
+          </div>
+
+          <div class="field">
             <div class="col-md-3"></div><!-- 空div -->
             <div class="col-md-2">
               <%= f.label :email, "メールアドレス" %><br />
