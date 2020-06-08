@@ -1,3 +1,10 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box-content {
+	background-color: #99cc00;
+	margin: 30px;
+	flex-wrap: wrap;
+	text-align: center;
+}
