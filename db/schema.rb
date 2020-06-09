@@ -48,14 +48,14 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "post_commnts", force: :cascade do |t|
+  create_table "post_comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_post_commnts_on_team_id"
-    t.index ["user_id"], name: "index_post_commnts_on_user_id"
+    t.index ["team_id"], name: "index_post_comments_on_team_id"
+    t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

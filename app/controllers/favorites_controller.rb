@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
   end
   # fab削除
   def destroy
-  	favorite = Favorite.find_by(team_id: @team.id, user_id: current_user.id)
+  	favorite = current_user.favorites.find_by(team_id: params[:team_id])
   	favorite.destroy
   	redirect_to request.referer
   end

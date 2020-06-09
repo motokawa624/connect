@@ -1,4 +1,4 @@
-class PostCommnt < ApplicationRecord
+class PostComment < ApplicationRecord
   belongs_to :user
   belongs_to :team
 end

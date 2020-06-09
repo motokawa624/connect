@@ -7,7 +7,8 @@ class PostCommentsController < ApplicationController
     redirect_to team_path(team)
   end
   def destroy
-
+    PostComment.find_by(id: params[:id], team_id: params[:team_id]).destroy
+    redirect_to team_path(params[:team_id])
   end
 
   def post_comment_params
