@@ -6,7 +6,8 @@ class TeamsController < ApplicationController
 	def show
 		@team = Team.find(params[:id])
 		user = current_user
-
+		@post_comment = PostComment.new
+		@post_comments = @team.post_comments
 	end
 
 	def new
@@ -20,7 +21,6 @@ class TeamsController < ApplicationController
 
   def create
   	@team = Team.new(team_params)
-  	@team.user_id = current_user.id
   	if @team.save
       redirect_to @team
     else
@@ -41,6 +41,10 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.destroy
     redirect_to teams_url
+  end
+
+  def myteam
+  	@teams = Team.all
   end
 
 	private

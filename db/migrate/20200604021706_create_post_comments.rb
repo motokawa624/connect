@@ -1,6 +1,6 @@
-class CreatePostCommnts < ActiveRecord::Migration[5.2]
+class CreatePostComments < ActiveRecord::Migration[5.2]
   def change
-    create_table :post_commnts do |t|
+    create_table :post_comments do |t|
       t.references :user, foreign_key: true
       t.references :team, foreign_key: true
       t.text :comment
