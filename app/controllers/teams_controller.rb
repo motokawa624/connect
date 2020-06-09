@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
 	def show
 		@team = Team.find(params[:id])
 		user = current_user
+
 	end
 
 	def new
@@ -14,25 +15,32 @@ class TeamsController < ApplicationController
 	end
 
 	def edit
-
-	end
-
-	def update
-
+		@team = Team.find(params[:id])
 	end
 
   def create
   	@team = Team.new(team_params)
+  	@team.user_id = current_user.id
   	if @team.save
       redirect_to @team
     else
-      @teams = Team.all
+    	@teams = Team.all
       render 'index'
     end
   end
 
+	def update
+    @team = Team.find(params[:id])
+    if @team.update(team_params)
+      redirect_to @team
+    else
+      render 'edit'
+    end
+	end
   def destroy
-
+    @team = Team.find(params[:id])
+    @team.destroy
+    redirect_to teams_url
   end
 
 	private

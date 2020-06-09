@@ -13,11 +13,13 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followed', as: 'followers'
   end
 
-  resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy]
+  resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy] do
+    resource :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
   get 'home' => 'teams#index'
   get 'myteam' => 'teams#myteam'
-  resources :post_comments, only: [:create, :destroy]
-  resources :favorites, only: [:create, :destroy]
+
   resources :belongs, only: [:update]
   get 'chat/:id' => 'chat#show', as: 'chat'
   post 'contact/:id' => 'contact#create'

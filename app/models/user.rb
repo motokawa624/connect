@@ -23,9 +23,9 @@ class User < ApplicationRecord
   attachment :profile_image
   has_many :teams
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
-  has_many :post_comments
+  has_many :post_comments, dependent: :destroy
   # チームに所属するためのアソシエーション
   has_many :belongs
   # チャットにアソシエーション
