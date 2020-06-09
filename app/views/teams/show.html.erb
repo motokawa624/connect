@@ -1,15 +1,35 @@
-<%= @team.name %>
-<% if @team.users = current_user %>
-	<%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
-    <%= link_to '削除する', @team, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_book_#{@team.id}"%>
- <% end %>
-<%= @team.team_image %>
-メンバー
-<%= @team.users.name %>
-募集ステータス
-<% if @teams.is_status == false %>
-募集中
-<% else %>
-参加中
-<% end %>
-<%= @team.introduction %>
+<%= render "users/sidebar", user: current_user %>
+	<div class="team-show-header">
+		<%= @team.name %>
+
+		  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
+		  <%= link_to '削除する', @team, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_book_#{@team.id}"%>
+
+	</div>
+
+	  	<div class="col-md-4">
+			  <%= attachment_image_tag(@team, :team_image, :fill, 400, 300, fallback: "/images/no-image.jpg") %>
+			  <% @team.tag_list.each do |tag| %>
+	        <span class="label label-primary"><%= tag %></span>
+	      <% end %>
+	    </div>
+	    <div class="col-md-4">
+				メンバー
+				<%= @team.users.name %>
+				<%= form_for(@team,url:teams_path) do |f| %>
+	    		<label><%= f.radio_button :is_status, "true" %>参加する</label>
+	    		<lavel><%= f.radio_button :is_status, "false" %>脱退する</lavel>
+      		<span style="margin-left:15px;"><%= f.submit "追加",class:"btn btn-primary btn" %></span>
+   		 <% end %>
+				募集ステータス
+
+				募集中
+			<%= @team.introduction %>
+				参加中
+			</div>
+		</div>
+
+
+
+<div class="container">
+	</div>

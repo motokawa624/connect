@@ -1,5 +1,5 @@
 <%= render "users/sidebar", user: current_user %>
-<div class="container">
+<div class="container user-index">
   <div class="row">
 
       <% @users.each do |user| %>
@@ -16,7 +16,7 @@
             <%= user.place %>
           </div>
           <div>
-            <!-- truncateは文字を丸めるヘルパー -->
+            <!-- truncateは文字量を丸めるヘルパー -->
           <%= truncate(user.introduction, length: 10) %>
           </div>
           <% if current_user != user %>
