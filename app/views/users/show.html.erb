@@ -1,11 +1,13 @@
 		<%= render "users/sidebar", user: current_user %>
 
 
-<h3>メンバー詳細</h3>
+<h3>メンバー詳細</h3>		<% if current_user != @user %>
+  			<%= link_to 'チャットを始める', chat_path(@user.id) %>
+		<% end %>
 <div class="container">
   <div class="row">
 		<div class ="col-xs-12">
-			<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "/images/no_image.jpg") %>
+			<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "/assets/no_image.jpg") %>
 		</div>
 		<div class ="col-xs-12">
 			<%= @user.name %>
@@ -37,6 +39,7 @@
 		    <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
 		  <% end %>
 		<% end %>
+
 
 	</div>
 </div>

@@ -16,7 +16,7 @@
 			  	<%= f.label :place, "エリア" %>
 			  </div>
 			  <div class="col-md-7">
-			  	<%= f.text_field :place %>
+			  	<%= f.select :place, User.places.keys.to_a, {} %>
 				</div>
 
     		<div class="col-md-3"></div> <!-- 空div -->

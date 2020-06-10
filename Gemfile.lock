@@ -382,6 +382,7 @@ DEPENDENCIES
   omniauth-github
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.3)
+  ransack
   refile!
   refile-mini_magick
   rspec-rails

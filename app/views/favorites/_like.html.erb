@@ -1,0 +1,11 @@
+    <% if team.favorited_by?(current_user) %>
+        <%= link_to team_favorites_path(team), method: :delete, remote: true do %>
+        <%#= fa_icon "heart", text: "#{book.favorites.count}", style: "color: red;" %>
+        <span class="glyphicon glyphicon-heart"><%= team.favorites.count%></span>
+      <% end %>
+    <% else %>
+        <%= link_to team_favorites_path(team), method: :post, remote: true do %>
+        <%#= fa_icon "heart-o", text: "#{book.favorites.count}", style: "color: red;" %>
+        <span class="glyphicon glyphicon-heart-empty"><%= team.favorites.count %></span>
+      <% end %>
+    <% end %>

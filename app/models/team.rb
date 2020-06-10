@@ -4,10 +4,10 @@ class Team < ApplicationRecord
 	has_many :belongs
 	has_many :users
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.where(user_id: user.id, team_id: self.id).exists?
   end
 
-	# rifile
+	# refile
 	attachment :team_image
 	# タグ付
 	acts_as_taggable

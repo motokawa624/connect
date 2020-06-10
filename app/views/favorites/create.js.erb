@@ -1,0 +1,2 @@
+// 前者がクラス名 後者がrenderの指定
+$(".team_<%= @favorite.team_id %>").html("<%= j(render 'favorites/like',  team: @favorite.team ) %>")

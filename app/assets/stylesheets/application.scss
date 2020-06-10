@@ -16,11 +16,17 @@
  	@import "bootstrap-sprockets";  /*ここを追加*/
  	@import "bootstrap";            /*ここを追加*/
 
+//全体への記述
 .clearfix::after {
 	content: "";
 	display: block;
 	clear: both;
 }
+
+body {
+	background-color: #f3f3f3;
+}
+
 
 /ヘッダーに対しての記述/
 .nav {
@@ -61,4 +67,8 @@ footer {
 
 .sidebar-content {
 	padding:10px;
+}
+
+tbody {
+
 }
