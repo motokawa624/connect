@@ -21,7 +21,7 @@
 				<%= form_for(@team,url:teams_path) do |f| %>
 	    		<label><%= f.radio_button :is_status, "true" %>参加する</label>
 	    		<lavel><%= f.radio_button :is_status, "false" %>脱退する</lavel>
-      		<span style="margin-left:15px;"><%= f.submit "追加",class:"btn btn-primary btn" %></span>
+      		<span style="margin-left:15px;"><%= f.submit "更新する",class:"btn btn-primary btn" %></span>
    		 <% end %>
 				募集ステータス
 

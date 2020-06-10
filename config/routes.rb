@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get 'myteam' => 'teams#myteam'
 
   resources :belongs, only: [:update]
-  get 'chat/:id' => 'chat#show', as: 'chat'
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  post 'chat/:id'=> 'chats#create'
   post 'contact/:id' => 'contact#create'
 
 end

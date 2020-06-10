@@ -90,3 +90,6 @@ gem 'activeadmin'
 # 環境変数
 gem 'dotenv-rails'
 
+# 検索機能
+gem 'ransack'
+
