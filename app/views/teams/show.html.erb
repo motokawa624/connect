@@ -1,22 +1,26 @@
 <%= render "users/sidebar", user: current_user %>
 	<div class="team-show-header">
-		<%= @team.name %>
+		<span class="team-show-header-text"><%= @team.name %></span>
 
 		  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
 		  <%= link_to '削除する', teams_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
 
 	</div>
-	<div class="container">
+	<div class="container team-container">
 
-    <div class="row show-image-row">
-	  	<div class="col-md-4">
-			  <%= attachment_image_tag(@team, :team_image, :fill, 100, 300, fallback: "/assets/no_image_team.jpg", size:'300x200') %>
-			  <% @team.tag_list.each do |tag| %>
+    <div class="team-show-row">
+
+	  	<div class="col-md-6">
+				<%= attachment_image_tag(@team, :team_image, fallback: "/assets/no_image_team.jpg", size:'500x330') %><br>
+				<div class="team-show-tag">
+					<% @team.tag_list.each do |tag| %>
 	        <span class="label label-primary"><%= tag %></span>
-	      <% end %>
+	        <% end %>
+	      </div>
 	    </div>
+
 	    <div class="col-md-4">
-				メンバー
+				<p class="team-show-member">メンバー</p>
 				<%= @team.users.name %>
 				<%= form_for(@team,url:teams_path) do |f| %>
 	    		<label><%= f.radio_button :is_status, "true" %>参加する</label>
@@ -31,36 +35,34 @@
 			</div>
 		</div>
 
-		<div class="row">
-	    <div class="col-md-4">
+		<p class="comment-list">コメント一覧</p>
+
+		<div class="team-show-row comment-text">
+	    <div class="col-md-4 ">
 		    <% @team.post_comments.each do |post_comment| %>
-		        <li class="comment">
-		            <div class="comment-body bb">
-		                <div class="comment-avatar">
-		                </div>
-		                <div class="comment-text">
-		                    <div class="comment-author clearfix">
-		                        <a href="#" class="link-author"><%= post_comment.user.name %></a>
-		                        <span class="comment-meta">
-		                        <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
-		                        </span>
-		                    </div>
-		                    <div class="comment-entry"><%= post_comment.comment %></div>
-		                </div>
-		            </div>
-		        </li>
+          <div class="comment-text">
+              <div class="comment-author clearfix">
+                  <a href="#" class="link-author"><%= post_comment.user.name %></a>
+                  <span class="comment-meta">
+                  <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+                  </span>
+              </div>
+              <div class="comment-entry"><%= post_comment.comment %></div>
+          </div>
 		    <% end %>
 		  </div>
 		</div>
 
-		<%= form_for [@team, @post_comment] do |f| %>
-    <div class="row">
-        <div class="col-sm-12">
-            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+    <div class="col-md-12">
+		  <%= form_for [@team, @post_comment] do |f| %>
+		    <div class="comment-area">
+          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
         </div>
-    </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-		<% end %>
+        <div class="comment-submit">
+    		  <%= f.submit "コメントを投稿する", class: "btn btn-success", style: "padding: 5px 80px 5px;" %>
+    		</div>
+		  <% end %>
+		</div>
 
 
 	</div>
