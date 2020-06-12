@@ -13,26 +13,37 @@
   <body>
     <header class="header">
       <nav class='nav navbar-nav navbar-left' >
-        <% unless user_signed_in? %>
-          <span><%= link_to 'connect', root_path %></span>
-              <img src="/assets/logo.png">
-        <% else %>
-          <span><%= link_to 'connect', home_path %></span>
-        <% end %>
+        <div class="header-logo">
+          <% unless user_signed_in? %>
+            <%= link_to root_path do %>
+              <ul class="nav navbar-nav">
+                <li><img src="/assets/logo.png" alt="ロゴ" width="80" height="50"></li>
+                <li class="logo-text"><p>connect</p></li>
+              </ul>
+            <% end %>
+          <% else %>
+            <%= link_to home_path do %>
+              <ul class="nav navbar-nav">
+                <li><img src="/assets/logo.png" alt="ロゴ" width="80" height="50"></li>
+                <li class="logo-text"><p>connect</p></li>
+            </ul>
+            <% end %>
+          <% end %>
+        </div>
       </nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to "チームを作る", new_team_path %></li>
-          <li><%= link_to "メンバー", users_path %></li>
-          <li><%= link_to "チーム", home_path %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "アバウト", new_team_path %></li>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", user_session_path %></li>
-        <% end %>
-      </ul>
-
+      <div class="header-nav">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "チームを作る", new_team_path %></li>
+            <li><%= link_to "メンバー", users_path %></li>
+            <li><%= link_to "チーム", home_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
 
 
 
