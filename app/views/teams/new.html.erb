@@ -1,67 +1,10 @@
 <%= render "users/sidebar", user: current_user %>
 <div class="container">
 	<div class = "row">
-			<%= form_for(@team, url: teams_path) do |f| %>
-
-		    <div class="col-md-3"></div> <!-- 空div -->
-        <div class="col-md-2">
-		  		<%= f.label :name, "チーム名  (必須)" %>
-		  	</div>
-		  	<div class="col-md-7">
-		  		<%= f.text_field :name %>
-    		</div>
-
-    		<div class="col-md-3"></div> <!-- 空div -->
-        <div class="col-md-2">
-			  	<%= f.label :place, "エリア" %>
-			  </div>
-			  <div class="col-md-7">
-			  	<%= f.select :place, User.places.keys.to_a, {} %>
-				</div>
-
-    		<div class="col-md-3"></div> <!-- 空div -->
-        <div class="col-md-2">
-			  	<%= f.label :introduction, "説明  (必須)"%>
-			  </div>
-			  <div class="col-md-7">
-			  	<%= f.text_area :introduction %>
-			  </div>
-
-    		<div class="col-md-3"></div> <!-- 空div -->
-        <div class="col-md-2">
-			    <%= f.label :url, "github url"%>
-			  </div>
-			  <div class="col-md-7">
-			    <%= f.text_field :url %>
-			  </div>
-
-    		<div class="col-md-3"></div> <!-- 空div -->
-        <div class="col-md-2">
-			    <%= f.label :tag_list %>
-			  </div>
-			  <div class="col-md-7">
-			    <%= f.text_field :tag_list, value: @team.tag_list.join(',') %>
-			  </div>
-
-			  <div class="col-md-3"></div> <!-- 空div -->
-        <div class="col-md-2">
-			  	<%= f.label :team_imege %>
-			  </div>
-			  <div class="col-md-7">
-			    <%= f.attachment_field :team_image %>
-			  </div>
-			  
-		  <div class="col-md-3"></div> <!-- 空div -->
-      <div class="col-md-2">
-        <%= f.label :is_status, "募集状況" %><br />
-      </div>
-      <div class="col-md-7">
-			<label><%= f.radio_button :is_status, "true" %>有効</label>
-		    <lavel><%= f.radio_button :is_status, "false" %>無効　</lavel>
-		  </div>
-
-			  <%= f.submit "新規登録", class: 'btn btn-primary col-xs-6'%>
-			<% end %>
-
+		<%= form_for(@team, url: teams_path) do |f| %>
+      <%= render "teams/form", f: f %>
+      <div class="col-md-3"></div> <!-- 空div -->
+			<%= f.submit "新規登録", class: 'btn btn-primary col-xs-6'%>
+	  <% end %>
 	</div>
 </div>
