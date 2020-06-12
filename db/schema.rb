@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.boolean "is_status", default: false
-    t.string "place"
+    t.integer "place"
     t.text "introduction"
     t.string "team_image_id"
     t.text "url"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.string "place"
+    t.integer "place"
     t.text "introduction"
     t.string "profile_image_id"
     t.datetime "created_at", null: false
