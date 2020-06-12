@@ -3,7 +3,7 @@
 		<%= @team.name %>
 
 		  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
-		  <%= link_to '削除する', @team, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_book_#{@team.id}"%>
+		  <%= link_to '削除する', teams_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
 
 	</div>
 	<div class="container">
