@@ -1,10 +1,11 @@
 class CreateChats < ActiveRecord::Migration[5.2]
   def change
     create_table :chats do |t|
-	  t.references :user, foreign_key: true
-	  t.references :room, foreign_key: true
+	  t.integer :user_id
+	  t.integer :room_id
 	  t.text :message
       t.timestamps
     end
+    add_foreign_key :users, :rooms
   end
 end
