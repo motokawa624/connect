@@ -5,7 +5,6 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = Team.find(params[:id])
-		user = current_user
 		@post_comment = PostComment.new
 		@post_comments = @team.post_comments
 	end
@@ -40,11 +39,12 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
+    PostComment.find_by(id: params[:id], post_image_id: params[:post_image_id]).destroy
     redirect_to myteam_path
   end
 
   def myteam
-  	@teams = Team.all
+  	@teams = current_user.teams
   end
 
 	private
