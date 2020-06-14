@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_06_05_004552) do
 
   create_table "belongs", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "team_id"
+    t.bigint "user_id"
+    t.bigint "team_id"
     t.boolean "belong", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "team_id"
+    t.bigint "user_id"
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_favorites_on_team_id"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "team_id"
+    t.bigint "user_id"
+    t.bigint "team_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_004552) do
   end
 
   create_table "user_rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_user_rooms_on_room_id"
