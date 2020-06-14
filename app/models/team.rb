@@ -2,7 +2,10 @@ class Team < ApplicationRecord
 	has_many :favorites
 	has_many :post_comments
 	has_many :belongs
-	has_many :users
+	has_many :users, through: :belongs
+  # teamを保存するのと同時にbelongsを更新できるようにしています。
+  accepts_nested_attributes_for :belongs
+
   def favorited_by?(user)
     favorites.where(user_id: user.id, team_id: self.id).exists?
   end

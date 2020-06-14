@@ -1,10 +1,10 @@
 <%= render "users/sidebar", user: current_user %>
 	<div class="team-show-header">
 		<span class="team-show-header-text"><%= @team.name %></span>
-
+     <% if @team.users == current_user %>
 		  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
 		  <%= link_to '削除する', teams_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
-
+     <% end %>
 	</div>
 	<div class="container team-container">
 
@@ -21,20 +21,40 @@
 
 	    <div class="col-md-4">
 				<p class="team-show-member">メンバー</p>
-				<%= @team.users.name %>
-				<%= form_for(@team,url:teams_path) do |f| %>
-	    		<label><%= f.radio_button :is_status, "true" %>参加する</label>
-	    		<lavel><%= f.radio_button :is_status, "false" %>脱退する</lavel>
-      		<span style="margin-left:15px;"><%= f.submit "更新する",class:"btn btn-primary btn" %></span>
-   		 <% end %>
-				募集ステータス
+				  <% @team.belongs.each do |belong| %>
+				    <%= belong.user.name %>
+				  <% end %>
 
-				募集中
+				<%= form_for(@team,url:team_path) do |f| %>
+				  <%= f.fields_for :belongs do |belong| %>
+				  	<label><%= belong.radio_button :belong, "true" %>参加する</label>
+          	<lavel><%= belong.radio_button :belong, "false" %>参加しない</lavel>
+				  <% end %>
+
+      		<span style="margin-left:15px;"><%= f.submit "更新する",class:"btn btn-primary btn" %></span>
+
+      		<% if @team.is_status == true %>
+      		　	募集ステータス
+				  	募集中
+      		<% else %>
+      			募集ステータス
+				  	募集停止中
+      		<% end %>
+   		  <% end %>
+   		      <div class=<%="team_#{@team.id}"%>>
+              <%= render "favorites/like", team: @team %>
+            </div>
+
+チーム説明
 			<%= @team.introduction %>
-				参加中
 			</div>
 		</div>
 
+<%#
+  <div>
+    <%= link_to "削除", team_post_comment_path(@post_comments.team, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+  </div>
+%>
 		<p class="comment-list">コメント一覧</p>
 
 		<div class="team-show-row comment-text">

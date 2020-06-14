@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   # refileの記述
   attachment :profile_image
-  has_many :teams
+  has_many :teams, through: :belongs
 
   has_many :favorites, dependent: :destroy
 
