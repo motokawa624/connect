@@ -7,6 +7,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.string :team_image_id
       t.text :url
+      t.integer :owner_user_id
 
       t.timestamps
     end
