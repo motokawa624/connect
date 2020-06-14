@@ -2,14 +2,64 @@
 <html>
   <head>
     <title>Connect</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="header">
+      <nav class='nav navbar-nav navbar-left' >
+        <div class="header-logo">
+          <% unless user_signed_in? %>
+            <%= link_to root_path do %>
+              <ul class="nav navbar-nav">
+                <li><img src="/assets/logo.png" alt="ロゴ" width="80" height="50"></li>
+                <li class="logo-text"><p>connect</p></li>
+              </ul>
+            <% end %>
+          <% else %>
+            <%= link_to home_path do %>
+              <ul class="nav navbar-nav">
+                <li><img src="/assets/logo.png" alt="ロゴ" width="80" height="50"></li>
+                <li class="logo-text"><p>connect</p></li>
+            </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </nav>
+      <div class="header-nav">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "チームを作る", new_team_path %></li>
+            <li><%= link_to "メンバー", users_path %></li>
+            <li><%= link_to "チーム", home_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "ユーザー登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+
+
+
+
+
+    </header>
+    <% if notice %>
+     <p class="alert alert-notice"><%= notice %></p>
+   <% end %>
+   <% if alert %>
+     <p class="alert alert-error"><%= alert %></p>
+   <% end %>
+
     <%= yield %>
   </body>
+    <footer>
+    <p><span class="footer-right">©2020 connect</span></p>
+  </footer>
 </html>

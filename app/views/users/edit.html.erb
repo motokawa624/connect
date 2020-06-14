@@ -1,0 +1,69 @@
+<%= render "users/sidebar", user: current_user %>
+<div class="container">
+
+		<h3>プロフィール編集</h3>
+
+
+
+		<%= form_for(@user) do |f| %>
+
+	<div class="row">
+		<div class="col-md-3"></div> <!-- 空div -->
+      <div class="col-md-2">
+        <%= f.label :name, "名前" %><br />
+      </div>
+      <div class="col-md-7">
+		  <%= f.text_field :name, class: "name" %>
+		  </div>
+ 	</div>
+
+ 	<div class="row">
+		<div class="col-md-3"></div> <!-- 空div -->
+      <div class="col-md-2">
+        <%= f.label :email, "メールアドレス" %><br />
+      </div>
+      <div class="col-md-7">
+		  <%= f.text_field :email, class: "email" %>
+		  </div>
+ 	</div>
+
+ 	<div class="row">
+		<div class="col-md-3"></div> <!-- 空div -->
+      <div class="col-md-2">
+        <%= f.label :place, "エリア" %><br />
+      </div>
+      <div class="col-md-7">
+		  	<%= f.select :place, User.places.keys.to_a, {} %>
+		  </div>
+ 	</div>
+
+ 	<div class="row">
+		<div class="col-md-3"></div> <!-- 空div -->
+      <div class="col-md-2">
+        <%= f.label :introduction, "自己紹介" %><br />
+      </div>
+      <div class="col-md-7">
+		  <%= f.text_field :introduction, class: "introduction" %>
+		  </div>
+ 	</div>
+
+ 	<div class="row">
+		<div class="col-md-3"></div> <!-- 空div -->
+      <div class="col-md-2">
+        <%= f.label :prfile_image, "プロフィール画像" %><br />
+      </div>
+      <div class="col-md-7">
+		  <%= f.attachment_field :profile_image, class: "user_image" %>
+		  </div>
+ 	</div>
+
+ 
+ 	 <div class="row">
+ 	 	<div class="col-md-3"></div> <!-- 空div -->
+		  <div class="col-md-9">
+		    <%= f.submit "変更を保存する", class: "btn btn-primary edit-admin-btn" %>
+		  </div>
+		<% end %>
+	 </div>
+
+</div>

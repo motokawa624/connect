@@ -1,0 +1,10 @@
+<%= render "users/sidebar", user: current_user %>
+<div class="container">
+	<div class = "row">
+		<%= form_for(@team, url: teams_path) do |f| %>
+      <%= render "teams/form", f: f %>
+      <div class="col-md-3"></div> <!-- 空div -->
+			<%= f.submit "新規登録", class: 'btn btn-primary col-xs-6'%>
+	  <% end %>
+	</div>
+</div>

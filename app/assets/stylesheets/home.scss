@@ -1,0 +1,45 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// トップスライド
+.top1 {
+  background-image: image-url("top1.jpg");
+}
+.top2 {
+  background-image: image-url("top2.jpg");
+}
+.top3 {
+  background-image: image-url("top3.jpg");
+}
+.topimage {
+	height: 600px;
+	width: 100%;
+	margin-bottom: 55px;
+}
+
+
+.about {
+	margin: 120px 0 35px 0;
+}
+
+.container {
+	margin-top: 50px;
+	height: 1000px;
+	width: 100%;
+}
+
+.maintext {
+	margin-top:200px;
+	font-size: 70px;
+	color: #00CC00;
+}
+
+.subtext {
+	font-size: 40px;
+	color: #00CC00;
+}
+
+.row-top {
+	height : 200px;
+}

@@ -1,0 +1,95 @@
+// Place all the styles related to the teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+//indexページ
+.team-index-title {
+	text-align :center;
+}
+
+.team-image-box {
+	width: 250px;
+	background-color: white;
+}
+
+.box-content {
+	text-align: left;
+}
+
+.team-text-box{
+	background-color: #b0c4de;
+	padding-left: 30px;
+}
+
+.team-text {
+	padding-bottom: 10px;
+}
+
+.team-title {
+	font-size: 8px;
+}
+
+.iine {
+	text-align: center;
+}
+
+
+
+// showページ
+
+.team-container {
+	height: 1300px;
+}
+
+.team-show-header {
+  text-align: center;
+  margin: 100px;
+}
+
+.team-show-header-text {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.team-show-row {
+	height: 400px;
+}
+
+.team-show-tag {
+	font-size: 25px;
+}
+
+.team-show-member {
+	text-decoration:underline;
+}
+
+.comment-list {
+	text-align: center;
+	margin: 50px 0 30px 0 ;
+	font-size: 20px;
+}
+
+.comment-text {
+	background-color: white;
+}
+
+.comment-area {
+	margin: 30px;
+}
+
+.comment-submit {
+	text-align: center;
+}
+
+
+// new editページ
+.new-field {
+	height: 60px;
+}
+
+.new-button {
+	text-align: center;
+}
