@@ -3,7 +3,7 @@
 		<span class="team-show-header-text"><%= @team.name %></span>
      <% if @team.owner_user == current_user %>
 		  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
-		  <%= link_to '削除する', teams_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
+		  <%= link_to '削除する', team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
      <% end %>
 	</div>
 	<div class="container team-container">
@@ -54,7 +54,7 @@
 
 
 
-		<p class="comment-list">コメント一覧</p>
+		<p class="comment-list">コメント一覧 全<%= @team.post_comments.count %>件</p>
 
 		<div class="team-show-row comment-text">
 	    <div class="col-md-4 ">
@@ -68,7 +68,7 @@
               </div>
               <div class="comment-entry"><%= post_comment.comment %></div>
                 <% if post_comment.user == current_user %>
-                 <%= link_to 'Destroy', team_post_comments_path(post_comment), class: 'btn-sm btn-danger', method: :delete %>
+                 <%= link_to 'Destroy', team_post_comment_path(@team,post_comment), class: 'btn-sm btn-danger', method: :delete %>
                <% end %>
           </div>
 		    <% end %>

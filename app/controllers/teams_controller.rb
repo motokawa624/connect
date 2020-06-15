@@ -45,8 +45,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
-    PostComment.find_by(id: params[:id], team_id: params[:team_id]).destroy
-    redirect_to myteam_path
+    redirect_to home_path
   end
 
   def myteam
