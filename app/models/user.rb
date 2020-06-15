@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   # チームに所属するためのアソシエーション
   has_many :belongs
-  # チャットにアソシエーション
+  # チャットのアソシエーション
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms

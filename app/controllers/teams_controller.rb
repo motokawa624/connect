@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user!
 	def index
 		@teams = Team.all
 	end
@@ -44,7 +45,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
-    PostComment.find_by(id: params[:id], post_image_id: params[:post_image_id]).destroy
+    PostComment.find_by(id: params[:id], team_id: params[:team_id]).destroy
     redirect_to myteam_path
   end
 

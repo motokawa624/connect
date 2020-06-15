@@ -53,9 +53,6 @@
 		</div>
 
 
-  <div>
-    <%#<%= link_to "削除", team_post_comments_path(@post_comments.team, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
-   </div>
 
 		<p class="comment-list">コメント一覧</p>
 
@@ -70,6 +67,9 @@
                   </span>
               </div>
               <div class="comment-entry"><%= post_comment.comment %></div>
+                <% if post_comment.user == current_user %>
+                 <%= link_to 'Destroy', team_post_comments_path(post_comment), class: 'btn-sm btn-danger', method: :delete %>
+               <% end %>
           </div>
 		    <% end %>
 		  </div>

@@ -8,7 +8,25 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @current_user_rooms = UserRoom.where(user_id: current_user.id)
+    @user_user_rooms = UserRoom.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @current_user_rooms.each do |cu|
+        @user_user_rooms.each do |u|
+          if cu.room_id == u.room_id then
+            @is_room = true
+            @room_id = cu.room_id
+          end
+        end
+      end
+    end
+    unless @is_room
+      @room = Room.new
+      @user_room = UserRoom.new
+    end
   end
+
+
 
   def edit
     @user = User.find(params[:id])
