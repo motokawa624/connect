@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   # チームルーティング
   resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy] do
-    resource :post_comments, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
   resources :belongs, only: [:update]
