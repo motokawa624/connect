@@ -1,4 +1,5 @@
 class PostCommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     team = Team.find(params[:team_id])
     comment = current_user.post_comments.new(post_comment_params)
@@ -7,7 +8,8 @@ class PostCommentsController < ApplicationController
     redirect_to team_path(team)
   end
   def destroy
-    PostComment.find_by(id: params[:id], team_id: params[:team_id]).destroy
+    @post_comment = PostComment.find(params[:team_id])
+    @post_comment.destroy
     redirect_to team_path(params[:team_id])
   end
 
