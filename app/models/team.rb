@@ -2,6 +2,8 @@ class Team < ApplicationRecord
 	has_many :favorites
 	has_many :post_comments
 	has_many :belongs
+
+  belongs_to :owner_user, class_name: 'User', foreign_key: 'owner_user_id'
 	has_many :users, through: :belongs
   # teamを保存するのと同時にbelongsを更新できるようにしています。
   accepts_nested_attributes_for :belongs
