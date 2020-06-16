@@ -1,0 +1,3 @@
+// 前者がクラス名 後者がrenderの指定
+$(".comment_<%= @team.id %>").html("<%= j(render 'post_comments/post_comment',  team: @team ,post_comment: @post_comment) %>")
+

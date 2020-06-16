@@ -2,7 +2,6 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
   # fab作成
   def create
-  	# buildはnewと同じ意味で、アソシエーションしながらインスタンスをnewする時に形式的に使われる。
   	@favorite = current_user.favorites.new(team_id: params[:team_id])
   	@favorite.save
   end
