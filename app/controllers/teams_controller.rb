@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
 
 	def update
     @team = Team.find(params[:id])
-    if @team.update(team_params) # update ji no strong params ni kaeru
+    if @team.update(team_params)
       redirect_to @team
     else
       render 'edit'
@@ -57,11 +57,5 @@ class TeamsController < ApplicationController
   def team_params
   	params.require(:team).permit(:name, :is_status, :place, :introduction, :team_image, :url, :tag_list)
   end
-  # def update_team_params
-  #   params.require(:team).permit(:name, :is_status, :place, :introduction, :team_image, :url, :tag_list, :belongs [:belong, :_destroy, :id])
-  # end
-  # def update_article_params
-  #   #update時は[_delete]と[id]が必要
-  #   params.require(:article).permit(:title, images_attributes: [:content, :_destroy, :id])
-  # end
+
 end

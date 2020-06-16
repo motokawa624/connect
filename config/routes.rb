@@ -23,8 +23,9 @@ Rails.application.routes.draw do
   resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy] do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    resource :belongs, only: [:create, :destroy]
   end
-  resources :belongs, only: [:update]
+  
   get 'home' => 'teams#index'
   get 'myteam' => 'teams#myteam'
 
