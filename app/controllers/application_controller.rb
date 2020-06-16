@@ -4,8 +4,13 @@ class ApplicationController < ActionController::Base
   end
 	  #sign in後のredirect先変更
   def after_sign_in_path_for(resource)
-    home_path
+    if resource.is_a?(AdminUser)
+      admin_root_path
+    else
+      home_path
+    end
   end
+
 
    #sign out後のredirect先変更
   def after_sign_out_path_for(resource)
