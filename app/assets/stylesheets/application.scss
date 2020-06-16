@@ -45,8 +45,15 @@ header{
 }
 
 header {
+    position: fixed;
+  /*基準を画面の左上に*/
+  top: 0;
+  left: 0;
+  /*余白が入らないように*/
+  margin: 0;
 	background-color: #66CC66;
 	height: 50px;
+	width: 100%;
 }
 
 .header-logo {
@@ -81,3 +88,6 @@ footer {
 .sidebar-content {
 	padding:10px;
 }
+
+//フッター
+

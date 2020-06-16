@@ -6,7 +6,8 @@
 	<h3 class="member-show-head">メンバー詳細</h3>
 		<% if @user.id != current_user.id %>
 	  <% if @is_room == true %>
-	    <p><a href="/rooms/<% @room.id %>">チャットへ</a></p>
+
+	    <p><a href="/rooms/<%= @room_id %>">チャットへ</a></p>
 	  <% else %>
 	  	<%= form_with model: Room.new, url: rooms_path, method: :post, data: {remote: false} do |f| %>
 	  	<!-- 　　　hidden_fieldでルームコントローラに飛ばしてユーザールームのストロングパラメータを使用する。 -->
@@ -18,7 +19,7 @@
   <div class="row">
 
 		<div class ="col-xs-12">
-			<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "/assets/no_image.jpg") %>
+			<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
 		</div>
 
 		<div class ="col-xs-12">
