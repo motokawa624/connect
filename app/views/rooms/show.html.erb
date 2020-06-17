@@ -3,16 +3,28 @@
   <div class="row">
     <div class="col-md-8">
       <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
-
-      <div class="message" style="width: 400px;">
+  
+      <div class="line-bc">
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>
-            <p style="text-align: right;">
-              <%= chat.created_at.strftime('%m/%d') %>
-              <%= chat.message %></p>
+              <div class="mycomment">
+                <p style="text-align: right;">
+                <%= chat.created_at.strftime('%m/%d') %>
+                <%= chat.message %>
+              </div>
           <% else %>
-            <p style="text-align: left;">
-              <%= chat.message %></p>
+            <div class="other">
+              <div class="icon">
+                <p style="text-align: left;">
+                  <%= attachment_image_tag chat.user, :profile_image, format: 'jpg', size: "25x25", fallback: "no_image.jpg", class: "img-circle" %>
+                   <%= chat.created_at.strftime('%m/%d') %>
+              </div>
+              <div class="chatting">
+                <div class="talk">
+                  <%= chat.message %></p>
+                </div>
+              </div>
+            </div>
             <% end %>
           <% end %>
       </div>
