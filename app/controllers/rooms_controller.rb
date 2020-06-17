@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
 	  before_action :authenticate_user!
+    before_action :screen_room, only: [:show]
   def create
     @room = Room.create
     UserRoom.create(room_id: @room.id, user_id: current_user.id)
@@ -26,5 +27,12 @@ class RoomsController < ApplicationController
   private
   def room_params
     params.require(:user_room).permit(:user_id)
+  end
+  def screen_room
+    @room = Room.find(params[:id])
+    # 現在のユーザーとチャットしているユーザーのルームを他者に見られない様にする。
+    unless current_user && @room.user_rooms.where.not(user_id: current_user.id).take
+      redirect_to home_path
+    end
   end
 end

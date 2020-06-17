@@ -1,7 +1,13 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
 	def index
-		@teams = Team.all
+    if params[:user_id]
+      #マイチーム
+      @teams = Team.where(user_id: params[:user_id])
+    else
+      #全チーム
+		  @teams = Team.all
+    end
 	end
 
 	def show
