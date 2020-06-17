@@ -1,4 +1,4 @@
-<%= render "users/sidebar", user: current_user %>
+
 	<div class="team-show-header">
 		<span class="team-show-header-text"><%= @team.name %></span>
       <% if @team.owner_user == current_user %>
@@ -7,11 +7,13 @@
       <% end %>
 	</div>
 
-	<div class="container team-container">
+	<div class="container-fluid team-container">
 
     <div class="team-show-row">
-
-	  	<div class="col-md-6">
+    	<div class="col-md-3">
+          <%= render "users/sidebar", user: current_user %>
+        </div>
+	  	<div class="col-md-4">
 				<%= attachment_image_tag(@team, :team_image, fallback: "no_image_team.jpg", size:'500x330') %><br>
 				<div class="team-show-tag">
 					<% @team.tag_list.each do |tag| %>
@@ -20,13 +22,13 @@
 	      </div>
 	    </div>
 
-	    <div class="col-md-4">
+	    <div class="col-md-3">
 				<p class="team-show-member">メンバー</p>
 				<%= @team.owner_user.name %>
 
 					<% if current_user != @team.owner_user %>
 			   		<div class=<%="belong_#{@team.id}"%>>
-              <%= render "belongs/belong", team: @team, belong: @belong %>
+              <%= render "belongs/belong", team: @team, belong: @belong, belongs: @belongs %>
             </div>
           <% end %>
 
@@ -52,17 +54,18 @@
 			</div>
 		</div>
 
+      <div class="container">
+			<p class="comment-list">コメント一覧 全<%= @team.post_comments.count %>件</p>
+
+	      <div class=<%="comment_#{@team.id}"%>>
+	        <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
+	      </div>
+	  </div>
 
 
-		<p class="comment-list">コメント一覧 全<%= @team.post_comments.count %>件</p>
-
-      <div class=<%="comment_#{@team.id}"%>>
-        <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
-      </div>
 
 
 	</div>
-
 
 
 
