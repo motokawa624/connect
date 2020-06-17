@@ -22,13 +22,13 @@ Rails.application.routes.draw do
   resources :chats, only: [:create]
 
   # チームルーティング
-  resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy] do
+  resources :teams, only: [:index, :show, :new, :edit, :update, :create ,:destroy] do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
     resource :belongs, only: [:create, :destroy]
   end
   
-  get 'home' => 'teams#index'
+  get 'home' => 'teams#home'
   get 'myteam' => 'teams#myteam'
 
 

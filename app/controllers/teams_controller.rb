@@ -1,19 +1,21 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
 	def index
-    if params[:user_id]
-      #マイチーム
-      @teams = Team.where(user_id: params[:user_id])
-    else
-      #全チーム
-		  @teams = Team.all
-    end
+		@teams = Team.all
 	end
+
+  def home
+    # オーナーのチームと所属のチームidを配列で足し算する
+    @teams = Team.where(owner_user_id: current_user.id)
+    # 複数のidを取得してきてpluckで配列にする。
+    team_ids = Belong.where(user_id: current_user.id).pluck(:team_id)
+    teams = Team.find(team_ids)
+    @teams += teams
+  end
 
 	def show
 		@team = Team.find(params[:id])
     @belongs = Belong.where(team_id: params[:id])
-    # binding.pry
     @team.belongs.build
 		@post_comment = PostComment.new
 		@post_comments = @team.post_comments
