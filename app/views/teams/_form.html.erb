@@ -2,9 +2,9 @@
 	  <div class="col-md-3"></div> <!-- 空div -->
 	  <div class="col-md-2">
 		  <%= f.label :name, "チーム名  (必須)" %>
-		</div>
+	  </div>
 	  <div class="col-md-7">
-			<%= f.text_field :name %>
+			<%= f.text_field :name, placeholder: "cssでデザイン勉強会など" %>
 		</div>
 	</div>
 
@@ -24,7 +24,7 @@
 	  	<%= f.label :introduction, "説明  (必須)"%>
 	  </div>
 	  <div class="col-md-7">
-	  	<%= f.text_area :introduction %>
+	  	<%= f.text_area :introduction, placeholder: "あなたがこのチームでやりたいこと" %>
 	  </div>
 	</div>
 
@@ -34,7 +34,7 @@
 	    <%= f.label :url, "github url"%>
 	  </div>
 	  <div class="col-md-7">
-	    <%= f.text_field :url %>
+	    <%= f.text_field :url, placeholder: "チームのgithub urlがあればご記入ください" %>
 	  </div>
 	</div>
 
@@ -44,7 +44,7 @@
 	    <%= f.label :tag_list %>
 	  </div>
 	  <div class="col-md-7">
-	    <%= f.text_field :tag_list, value: @team.tag_list.join(',') %>
+	    <%= f.text_field :tag_list, value: @team.tag_list.join(','), placeholder: "html,css など" %>
 	  </div>
 	</div>
 
