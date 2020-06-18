@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
-  before_action :authenticate_user!
 
   def new
     @contact = Contact.new
   end
 
   def create
+    # params[:contact][:email]
+    # params[:email]
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
