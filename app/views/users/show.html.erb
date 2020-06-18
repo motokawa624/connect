@@ -1,9 +1,12 @@
-		<%= render "users/sidebar", user: current_user %>
+		
+<h3 class="member-show-head">メンバー詳細</h3>
 
 
+<div class="container-fluid">
+	<div class ="col-md-2">
+	  <%= render "users/sidebar", user: current_user %>
+	</div>
 
-<div class="container">
-	<h3 class="member-show-head">メンバー詳細</h3>
 		<% if @user.id != current_user.id %>
 	  <% if @is_room == true %>
 

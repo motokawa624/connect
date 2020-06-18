@@ -1,2 +1,11 @@
-    <h3 class="member-index-head">メンバー 一覧</h3>
-<%= render "users/index", user: current_user %>
+ <h3 class="member-index-head">メンバー 一覧</h3>
+
+ <div class="container-fluid">
+  <div class="row">
+  	<div class ="col-md-2 side-table">
+      <%= render "users/sidebar", user: current_user %>
+    </div>
+
+   <%= render "users/index", user: current_user %>
+  </div>
+</div>
