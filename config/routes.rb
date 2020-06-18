@@ -27,12 +27,11 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resource :belongs, only: [:create, :destroy]
   end
-  
+
   get 'home' => 'teams#home'
-  get 'myteam' => 'teams#myteam'
 
 
 
-  post 'contact/:id' => 'contact#create'
+  resources :contacts, only: [:new, :create]
 
 end
