@@ -17,13 +17,14 @@
           <% unless user_signed_in? %>
             <%= link_to root_path do %>
               <ul class="nav navbar-nav">
-                <li><img src="logo.png" alt="ロゴ" width="80" height="50"></li>
+                <li><img src="/logo.png" alt="ロゴ" width="80" height="50"></li>
                 <li class="logo-text"><p>connect</p></li>
               </ul>
             <% end %>
           <% else %>
             <%= link_to home_path do %>
               <ul class="nav navbar-nav">
+                <li><img src="/logo.png" alt="ロゴ" width="80" height="50"></li>
                 <li class="logo-text"><p>connect</p></li>
             </ul>
             <% end %>
