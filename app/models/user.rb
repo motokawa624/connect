@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i(github)
 
+  validates :name, presence: true
+
   # ユーザーエリアの選択
   enum place:{
      "インターネット":0,
