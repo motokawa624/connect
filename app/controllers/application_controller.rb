@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
 	def after_sign_up_path_for(resource)
-    home_path
+    teams_path
   end
 	  #sign in後のredirect先変更
   def after_sign_in_path_for(resource)
     if resource.is_a?(AdminUser)
       admin_root_path
     else
-      home_path
+      teams_path
     end
   end
 
