@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
@@ -5,6 +7,7 @@ class ChatsController < ApplicationController
   end
 
   private
+
   def chat_params
     params.require(:chat).permit(:message, :room_id, :user_id)
   end

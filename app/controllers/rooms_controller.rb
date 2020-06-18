@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class RoomsController < ApplicationController
-	  before_action :authenticate_user!
-    before_action :screen_room, only: [:show]
+  before_action :authenticate_user!
+  before_action :screen_room, only: [:show]
+
   def create
     @room = Room.create
     UserRoom.create(room_id: @room.id, user_id: current_user.id)
@@ -16,23 +19,23 @@ class RoomsController < ApplicationController
     @user_room = @room.user_rooms.where.not(user_id: current_user.id).last
     @user = @user_room.user
     if UserRoom.where(user_id: current_user.id, room_id: @room.id).present?
-        @chats = @room.chats
-        @chat = Chat.new(room_id: @room.id)
-        @user_rooms = @room.user_rooms
+      @chats = @room.chats
+      @chat = Chat.new(room_id: @room.id)
+      @user_rooms = @room.user_rooms
     else
-        redirect_to users_path
+      redirect_to users_path
     end
   end
 
   private
+
   def room_params
     params.require(:user_room).permit(:user_id)
   end
+
   def screen_room
     @room = Room.find(params[:id])
     # 現在のユーザーとチャットしているユーザーのルームを他者に見られない様にする。
-    unless current_user && @room.user_rooms.where.not(user_id: current_user.id).take
-      redirect_to home_path
-    end
+    redirect_to home_path unless current_user && @room.user_rooms.where.not(user_id: current_user.id).take
   end
 end

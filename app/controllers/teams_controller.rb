@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-	def index
-		@teams = Team.all
-	end
+  
+  def index
+    @teams = Team.all
+  end
 
   def home
     # オーナーのチームと所属のチームidを配列で足し算する
@@ -13,52 +16,51 @@ class TeamsController < ApplicationController
     @teams += teams
   end
 
-	def show
-		@team = Team.find(params[:id])
+  def show
+    @team = Team.find(params[:id])
     @belongs = Belong.where(team_id: params[:id])
     @team.belongs.build
-		@post_comment = PostComment.new
-		@post_comments = @team.post_comments
-	end
+    @post_comment = PostComment.new
+    @post_comments = @team.post_comments
+  end
 
-	def new
-		@team = Team.new
+  def new
+    @team = Team.new
+  end
 
-	end
-
-	def edit
-		@team = Team.find(params[:id])
-	end
+  def edit
+    @team = Team.find(params[:id])
+  end
 
   def create
     @team = current_user.owner_teams.new(team_params)
-  	# @team = Team.new(team_params)
-   #  @team.owner_user_id = current_user.id
-  	if @team.save
+    # @team = Team.new(team_params)
+    #  @team.owner_user_id = current_user.id
+    if @team.save
       redirect_to @team
     else
       render 'new'
     end
   end
 
-	def update
+  def update
     @team = Team.find(params[:id])
     if @team.update(team_params)
       redirect_to @team
     else
       render 'edit'
     end
-	end
+  end
+
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
     redirect_to home_path
   end
 
-	private
+  private
 
   def team_params
-  	params.require(:team).permit(:name, :is_status, :place, :introduction, :team_image, :url, :tag_list)
+    params.require(:team).permit(:name, :is_status, :place, :introduction, :team_image, :url, :tag_list)
   end
-
 end

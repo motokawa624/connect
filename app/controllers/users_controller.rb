@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-    before_action :authenticate_user!
-    before_action :screen_user, only: [:edit, :update]
+  before_action :authenticate_user!
+  before_action :screen_user, only: %i[edit update]
   def index
     @users = User.all
-
   end
 
   def show
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
     unless @user.id == current_user.id
       @current_user_rooms.each do |cu|
         @user_user_rooms.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @is_room = true
             @room_id = cu.room_id
           end
@@ -25,8 +26,6 @@ class UsersController < ApplicationController
       @user_room = UserRoom.new
     end
   end
-
-
 
   def edit
     @user = User.find(params[:id])
@@ -41,15 +40,13 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
 
-    def user_params
-		params.require(:user).permit(:name, :email, :place, :introduction, :profile_image)
-	end
-    def screen_user
-      unless params[:id].to_i == current_user.id
-        redirect_to user_path(current_user)
-      end
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :place, :introduction, :profile_image)
+  end
+
+  def screen_user
+    redirect_to user_path(current_user) unless params[:id].to_i == current_user.id
+  end
 end

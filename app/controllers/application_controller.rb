@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-	def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     teams_path
   end
-	  #sign in後のredirect先変更
+
+  # sign in後のredirect先変更
   def after_sign_in_path_for(resource)
     if resource.is_a?(AdminUser)
       admin_root_path
@@ -11,16 +14,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-   #sign out後のredirect先変更
-  def after_sign_out_path_for(resource)
+  # sign out後のredirect先変更
+  def after_sign_out_path_for(_resource)
     root_path
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :place]) # 新規登録時(sign_up時)にnameとplaceいうキーのパラメーターを追加で許可する
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name place]) # 新規登録時(sign_up時)にnameとplaceいうキーのパラメーターを追加で許可する
   end
 end
 
