@@ -37,8 +37,7 @@ class TeamsController < ApplicationController
   	if @team.save
       redirect_to @team
     else
-    	@teams = Team.all
-      render 'index'
+      render 'new'
     end
   end
 
