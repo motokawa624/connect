@@ -56,10 +56,6 @@ class TeamsController < ApplicationController
     redirect_to home_path
   end
 
-  def myteam
-  	@teams = current_user.teams
-  end
-
 	private
 
   def team_params
