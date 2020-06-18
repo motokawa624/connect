@@ -7,12 +7,11 @@
 	</div>
 
 	<div class="container-fluid team-container">
-
     <div class="team-show-row">
 
     	<div class="col-md-3">
-          <%= render "users/sidebar", user: current_user %>
-        </div>
+        <%= render "users/sidebar", user: current_user %>
+      </div>
 	  	<div class="col-md-4">
 				<%= attachment_image_tag(@team, :team_image, fallback: "no_image_team.jpg", size:'500x330') %><br>
 				<div class="team-show-tag">
@@ -52,10 +51,10 @@
         <% end %>
 
 
-
-   		      <div class=<%="team_#{@team.id}"%>>
-              <%= render "favorites/like", team: @team %>
-            </div>
+        <!-- いいね機能 -->
+		    <div class=<%="team_#{@team.id}"%>>
+          <%= render "favorites/like", team: @team %>
+        </div>
 
 			<p>チーム説明</p>
 			<p><%= @team.introduction %></p>
@@ -65,16 +64,10 @@
       <div class="container">
 			<p class="comment-list">コメント一覧</p>
 
-				
-
 	      <div class=<%="comment_#{@team.id}"%>>
 	        <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
 	      </div>
 	  </div>
-
-
-
-
 	</div>
 
 
