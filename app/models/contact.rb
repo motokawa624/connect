@@ -1,6 +1,8 @@
-class Contact < ApplicationRecord
-	belongs_to :user
+# frozen_string_literal: true
 
-	validates :email, presence: true
-	validates :message, presence: true, length: {maximum: 200}
+class Contact < ApplicationRecord
+  belongs_to :user
+
+  validates :email, presence: true
+  validates :message, presence: true, length: { maximum: 200 }
 end

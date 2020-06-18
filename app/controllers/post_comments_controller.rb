@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostCommentsController < ApplicationController
   before_action :authenticate_user!
   def create
@@ -7,6 +9,7 @@ class PostCommentsController < ApplicationController
     comment.save
     @post_comment = PostComment.new
   end
+
   def destroy
     @team = Team.find(params[:team_id])
     @post_comment = PostComment.find(params[:id])
