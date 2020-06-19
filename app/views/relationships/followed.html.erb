@@ -5,8 +5,9 @@
   	<div class ="col-md-2 side-table">
       <%= render "users/sidebar", user: current_user %>
     </div>
-
-   <%= render "users/index", user: @users %>
+    <div class ="col-md-10">
+      <%= render "users/index", user: @users %>
+    </div>
   </div>
 </div>
 <% else %>
