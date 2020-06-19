@@ -1,9 +1,9 @@
 	<div class="team-show-header">
 		<span class="team-show-header-text"><%= @team.name %></span>
-      <% if @team.owner_user == current_user %>
-		 	  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
-		    <%= link_to '削除する', team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
-      <% end %>
+    <% if @team.owner_user == current_user %>
+	 	  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
+	    <%= link_to '削除する', team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
+    <% end %>
 	</div>
 
 	<div class="container-fluid team-container">
@@ -28,27 +28,26 @@
 				  	募集停止中
       		<% end %>
       	</p>
-				<%= attachment_image_tag @team.owner_user, :profile_image, format: 'jpg', size: "40x40", fallback: "no_image.jpg", class: "img-circle" %>
-				<%= @team.owner_user.name %>
+				  	<%= attachment_image_tag @team.owner_user, :profile_image, format: 'jpg', size: "40x40", fallback: "no_image.jpg", class: "img-circle" %>
+				  	<%= @team.owner_user.name %>
+					<% if current_user != @team.owner_user %>
+					  <% @belongs.each do |belong| %>
+					    <%= attachment_image_tag belong.user, :profile_image, format: 'jpg', size: "40x40", fallback: "no_image.jpg", class: "img-circle" %>
+					    <%= belong.user.name %></br>
+				  	<% end %>
 
-				<% if current_user != @team.owner_user %>
-				  <% @belongs.each do |belong| %>
-				    <%= attachment_image_tag belong.user, :profile_image, format: 'jpg', size: "40x40", fallback: "no_image.jpg", class: "img-circle" %>
-				    <%= belong.user.name %></br>
-				  <% end %>
-
-					<% if @team.belonged_by?(current_user) %>
-					  <%= link_to team_belongs_path(@team), method: :delete do %>
-					  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
-				    <% end %>
-					<% else %>
-						<% if @team.is_status == true %>
-					    <%= link_to team_belongs_path(@team), method: :post do %>
-					    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
+						<% if @team.belonged_by?(current_user) %>
+						  <%= link_to team_belongs_path(@team), method: :delete do %>
+						  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
 					    <% end %>
-					  <% end %>
-					<% end %>
-        <% end %>
+						<% else %>
+							<% if @team.is_status == true %>
+						    <%= link_to team_belongs_path(@team), method: :post do %>
+						    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
+						    <% end %>
+						  <% end %>
+						<% end %>
+        	<% end %>
 
 
         <!-- いいね機能 -->
@@ -56,18 +55,18 @@
           <%= render "favorites/like", team: @team %>
         </div>
 
-			<p>チーム説明</p>
-			<p><%= @team.introduction %></p>
+				<p>チーム説明</p>
+				<p><%= @team.introduction %></p>
 			</div>
 		</div>
 
       <div class="container">
-			<p class="comment-list">コメント一覧</p>
+				<p class="comment-list">コメント一覧</p>
 
 	      <div class=<%="comment_#{@team.id}"%>>
 	        <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
 	      </div>
-	  </div>
+	  	</div>
 	</div>
 
 
