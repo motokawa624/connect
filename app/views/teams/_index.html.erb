@@ -1,4 +1,4 @@
-<div class ="col-md-8 box-content">
+
   <% @teams.each do |team| %>
     <div class="team-box">
       <div class="team-all-box">
@@ -12,7 +12,7 @@
           </div>
           <div class="team-text">
             <span class="team-title">オーナー</span><br>
-            <%= attachment_image_tag team.owner_user, :profile_image, format: 'jpg', size: "25x25", fallback: "no_image.jpg", class: "img-circle" %>
+            <%= attachment_image_tag team.owner_user, :profile_image, :fill, 100, 100, size: "25x25", fallback: "/no-image-icon.png", class: "img-circle" %>
             <%= team.owner_user.name %>
           </div>
           <div class="team-text">
@@ -34,8 +34,6 @@
       </div>
     </div>
   <% end %>
-  <div class="col-md-6">
-    <%= paginate @teams %>
-  </div>
-</div>
+
+
 

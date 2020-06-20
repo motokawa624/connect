@@ -8,5 +8,8 @@
     <div class ="col-md-10">
       <%= render "users/index", user: current_user %>
     </div>
+    <div class="col-md-6">
+      <%= paginate @users %>
+    </div>
   </div>
 </div>
