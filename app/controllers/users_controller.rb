@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :screen_user, only: %i[edit update]
   def index
-    @users = User.all
+    @users = User.page(params[:page]).reverse_order
   end
 
   def show
