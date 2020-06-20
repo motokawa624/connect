@@ -1,7 +1,7 @@
 
 	<table class="sidebar">
 		<tr>
-			<th class="sidebar-content"><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle") %></th>
+			<th class="sidebar-content"><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/no-image-icon.png", class: "img-circle") %></th>
 		</tr>
 
 		<tr>
