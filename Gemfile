@@ -98,3 +98,6 @@ end
 # 検索機能
 gem 'ransack'
 
+#ページネーション
+gem 'kaminari','~> 1.2.1'
+gem 'kaminari-bootstrap', '~> 3.0.1'
