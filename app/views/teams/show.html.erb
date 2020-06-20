@@ -20,6 +20,7 @@
 	        <% end %>
 	      </div>
 	    </div>
+
 	    <div class="col-md-3">
 				<p class="team-show-member">メンバー
 				  <% if @team.is_status == true %>
@@ -28,27 +29,33 @@
 				  	募集停止中
       		<% end %>
       	</p>
-				  	<%= attachment_image_tag @team.owner_user, :profile_image, format: 'jpg', size: "40x40", fallback: "no_image.jpg", class: "img-circle" %>
-				  	<%= @team.owner_user.name %>
-					<% if current_user != @team.owner_user %>
-					  <% @belongs.each do |belong| %>
-					    <%= attachment_image_tag belong.user, :profile_image, format: 'jpg', size: "40x40", fallback: "no_image.jpg", class: "img-circle" %>
-					    <%= belong.user.name %></br>
-				  	<% end %>
-
-						<% if @team.belonged_by?(current_user) %>
-						  <%= link_to team_belongs_path(@team), method: :delete do %>
-						  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
-					    <% end %>
-						<% else %>
-							<% if @team.is_status == true %>
-						    <%= link_to team_belongs_path(@team), method: :post do %>
-						    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
+					<div class="team-show-member-box">
+						  <div class="team-show-member-text">
+						    オーナー<br>
+					  	  <%= attachment_image_tag @team.owner_user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
+					  	  <%= @team.owner_user.name %><br>
+					    </div>
+						<% if current_user != @team.owner_user %>
+						 <div class="team-show-member-text">
+						 	 メンバー<br>
+						   <% @belongs.each do |belong| %>
+						     <%= attachment_image_tag belong.user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
+						     <%= belong.user.name %>
+					  	 <% end %>
+						 </div>
+							<% if @team.belonged_by?(current_user) %>
+							  <%= link_to team_belongs_path(@team), method: :delete do %>
+							  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
 						    <% end %>
-						  <% end %>
-						<% end %>
-        	<% end %>
-
+							<% else %>
+								<% if @team.is_status == true %>
+							    <%= link_to team_belongs_path(@team), method: :post do %>
+							    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
+							    <% end %>
+							  <% end %>
+							<% end %>
+	        	<% end %>
+        	</div>
 
         <!-- いいね機能 -->
 		    <div class=<%="team_#{@team.id}"%>>
@@ -57,6 +64,10 @@
 
 				<p>チーム説明</p>
 				<p><%= @team.introduction %></p>
+
+				<p>github url</p>
+				<p><%= @team.url %></p>
+
 			</div>
 		</div>
 

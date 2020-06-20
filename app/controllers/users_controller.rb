@@ -25,6 +25,11 @@ class UsersController < ApplicationController
       @room = Room.new
       @user_room = UserRoom.new
     end
+    # ユーザーが所属しているチームの表示
+    @teams = Team.where(owner_user_id: @user.id)
+    team_ids = Belong.where(user_id: @user.id).pluck(:team_id)
+    teams = Team.find(team_ids)
+    @teams += teams
   end
 
   def edit

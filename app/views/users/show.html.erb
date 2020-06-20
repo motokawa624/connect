@@ -11,7 +11,7 @@
 		<div class ="col-md-10">
 			<div class="user-show-box">
 				<div class ="">
-					<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+					<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/no-image-icon.png", class: "img-circle") %>
 				</div>
 
 				<div class ="">
@@ -65,8 +65,15 @@
 
 
 		  </div>
+		  <div class="belong-team-list-box">
+		  	<div class="belong-team-list">
+		      <p>所属チーム一覧</p>
+		    </div>
+		     <%= render "teams/index", team: @team %>
+		  </div>
 	  </div>
 
 
   </div>
 </div>
+
