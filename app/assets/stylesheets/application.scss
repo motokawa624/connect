@@ -63,6 +63,14 @@ header {
 	margin: 10px 0 0 0;
 }
 
+.header-link {
+	text-decoration: none;
+}
+
+li {
+	text-decoration: none ;
+}
+
 //フッター
 footer {
 	background-color: #2f4f4f;
@@ -75,18 +83,21 @@ footer {
 }
 
 //サイドバー
-.sidetable {
+.side-table {
 	text-align: center;
-	float: left;
 	padding: 10px;
+	background-color: #cafbce;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #cafbce;
+    color: black;
+    margin: 2em 0;
+    padding: 2em;
 }
 
 .sidebar-content {
-	padding:10px;
-	padding: 0.5em 1em;
+	padding:10px 0;
+	text-align: center;
     margin: 2em 0;
-    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
-    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
 
 }
 
