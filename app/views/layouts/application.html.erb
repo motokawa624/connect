@@ -17,15 +17,15 @@
           <% unless user_signed_in? %>
             <%= link_to root_path do %>
               <ul class="nav navbar-nav">
-                <li><img src="/logo.png" alt="ロゴ" width="80" height="50"></li>
-                <li class="logo-text"><p>connect</p></li>
+                <li><img src="/logo.png" alt="ロゴ" width="70" height="50"></li>
+                <li class="logo-text"><p class="connect">connect</p></li>
               </ul>
             <% end %>
           <% else %>
             <%= link_to teams_path do %>
               <ul class="nav navbar-nav">
-                <li><img src="/logo.png" alt="ロゴ" width="80" height="50"></li>
-                <li class="logo-text"><p>connect</p></li>
+                <li><img src="/logo.png" alt="ロゴ" width="70" height="50"></li>
+                <li class="logo-text"><p class="connect">connect</span></li>
             </ul>
             <% end %>
           <% end %>
@@ -35,33 +35,33 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to new_team_path do %>
+              <%= link_to new_team_path, class: "nav-link" do %>
                 <i class="fas fa-plus-circle"></i>チームを作る
               <% end %>
             </li>
-            <li>
-              <%= link_to users_path do %>
+            <li class="nav-item">
+              <%= link_to users_path, class: "nav-link" do %>
                 <i class="fas fa-users"></i>メンバー
               <% end %>
             </li>
-            <li>
-              <%= link_to teams_path do %>
+            <li class="nav-item">
+              <%= link_to teams_path, class: "nav-link" do %>
                 <i class="far fa-handshake"></i>チーム
               <% end %>
             </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
                 <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
           <% else %>
-            <li>
-              <%= link_to new_user_registration_path do %>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
                 <i class="fas fa-user-plus"></i>ユーザー登録
               <% end %>
             </li>
-            <li>
-              <%= link_to user_session_path do %>
+            <li class="nav-item">
+              <%= link_to user_session_path, class: "nav-link" do %>
                 <i class="fas fa-sign-in-alt"></i>ログイン
               <% end %>
               </li>
