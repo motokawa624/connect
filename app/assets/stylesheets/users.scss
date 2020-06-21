@@ -37,8 +37,19 @@
     margin-bottom: 30px;
 }
 
+.user-show-box {
+	text-align: center;
+	padding-right: 300px;
+}
+
 .user-show-text {
 	margin-bottom: 10px;
+}
+
+.user-introduction-box {
+	width: 300px;
+	text-align: center;
+	margin-left: 425px;
 }
 
 //indexページ
@@ -55,6 +66,9 @@
 	float: left;
 }
 
+.user-index-text {
+	margin-bottom: 10px;
+}
 
 //editページ
 .user-edit-area {
@@ -62,7 +76,4 @@
 	margin: 50px;
 }
 
-.user-show-box {
-	text-align: center;
-	padding-right: 300px;
-}
+
