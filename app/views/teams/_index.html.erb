@@ -17,10 +17,10 @@
           </div>
           <div class="team-text">
             <span class="team-title">エリア</span><br>
-            <%= team.place %>
+            <i class="fas fa-map-marker-alt"></i><%= team.place %>
           </div>
           <div class="team-text">
-            <span class="team-title">チーム説明</span><br>
+            <span class="team-title">チームについて</span><br>
             <!-- truncateは文字量を丸めるヘルパー -->
             <%= truncate(team.introduction, length: 15) %>
           </div>

@@ -19,6 +19,12 @@
 	          <span class="label label-primary"><%= tag %></span>
 	        <% end %>
 	      </div>
+    		<!-- いいね機能 -->
+    		<div class="team-show-iine">
+			    <div class=<%="team_#{@team.id}"%>>
+	          <%= render "favorites/like", team: @team %>
+	        </div>
+	      </div>
 	    </div>
 
 	    <div class="col-md-3">
@@ -30,55 +36,58 @@
       		<% end %>
       	</p>
 					<div class="team-show-member-box">
-						  <div class="team-show-member-text">
-						    オーナー<br>
-					  	  <%= attachment_image_tag @team.owner_user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
-					  	  <%= @team.owner_user.name %><br>
-					    </div>
-						<% if current_user != @team.owner_user %>
-						 <div class="team-show-member-text">
-						 	 メンバー<br>
-						   <% @belongs.each do |belong| %>
-						     <%= attachment_image_tag belong.user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
-						     <%= belong.user.name %>
-					  	 <% end %>
-						 </div>
-							<% if @team.belonged_by?(current_user) %>
-							  <%= link_to team_belongs_path(@team), method: :delete do %>
-							  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
-						    <% end %>
-							<% else %>
-								<% if @team.is_status == true %>
-							    <%= link_to team_belongs_path(@team), method: :post do %>
-							    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
-							    <% end %>
-							  <% end %>
-							<% end %>
-	        	<% end %>
-        	</div>
+					  <div class="team-show-member-text">
+					    <span class="team-title">オーナー</span><br>
+				  	  <%= attachment_image_tag @team.owner_user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
+				  	  <%= @team.owner_user.name %><br>
+				    </div>
 
-        <!-- いいね機能 -->
-		    <div class=<%="team_#{@team.id}"%>>
-          <%= render "favorites/like", team: @team %>
-        </div>
+						<div class="team-show-member-text">
+					 	  <span class="team-title">メンバー</span><br>
+					    <% @belongs.each do |belong| %>
+					      <%= attachment_image_tag belong.user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
+					      <%= belong.user.name %>
+				  	  <% end %>
+				  	  <div class="team-belong-btn">
+					  	  <!-- チームオーナーじゃなかったら表示 -->
+							  <% if current_user != @team.owner_user %>
+									<% if @team.belonged_by?(current_user) %>
+									  <%= link_to team_belongs_path(@team), method: :delete do %>
+									  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
+								    <% end %>
+									<% else %>
+									  <!-- メンバーを募集していたら参加可能 -->
+										<% if @team.is_status == true %>
+									    <%= link_to team_belongs_path(@team), method: :post do %>
+									    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
+									    <% end %>
+									  <% end %>
+									<% end %>
+			        	<% end %>
+			        </div>
+		        </div>
 
-				<p>チーム説明</p>
-				<p><%= @team.introduction %></p>
 
-				<p>github url</p>
-				<p><%= raw Rinku.auto_link(h(@team.url)) %></p>
 
+						<p><span class="team-title">チームについて</span></p>
+						<p class="introduction"><%= @team.introduction %></p>
+
+					  <%= link_to @team.url, target: :_blank do %>
+		  				<i class="fab fa-github-square fa-3x"></i>
+		  			<% end %>
+
+					</div>
 			</div>
-		</div>
 
-      <div class="container">
-				<p class="comment-list">コメント一覧</p>
 
-	      <div class=<%="comment_#{@team.id}"%>>
-	        <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
-	      </div>
-	  	</div>
 	</div>
 
+  <div class="container">
+		<p class="comment-list">コメント一覧</p>
+
+    <div class=<%="comment_#{@team.id}"%>>
+      <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
+    </div>
+	</div>
 
 
