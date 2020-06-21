@@ -10,67 +10,79 @@
 
 		<div class ="col-md-10">
 			<div class="user-show-box">
-				<div class ="">
+				<div class ="user-show-text">
 					<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/no-image-icon.png", class: "img-circle") %>
 				</div>
 
-				<div class ="">
+				<div class ="user-show-text">
 					<%= @user.name %>
 				</div>
 
-				<div class ="">
+				<div class ="user-show-text">
 					<i class="fas fa-map-marker-alt"></i><%= @user.place %>
 				</div>
 
-				<div class ="">
-				    introduction
-				    <%= @user.introduction %>
+				<div class ="user-show-text">
+				  <%= @user.introduction %>
 				</div>
 
-				<div class ="">
+				<div class ="user-show-text">
+				  <%= @user.url %>
+				</div>
+
+				<div class ="user-show-text">
 					<% if current_user == @user %>
 			    	<%= link_to '  プロフィールを編集する',edit_user_path(@user),class: " btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
 			    <% end %>
 			  </div>
 
-					  参加チーム
-					  カウント
-					    フォロー
-					    <%= link_to @user.follower.count, user_follows_path(@user) %>
-					  フォロワー
-					    <%= link_to @user.followed.count, user_followers_path(@user) %>
+        <div class ="user-show-text">
+			    フォロー
+			      <%= link_to @user.follower.count, user_follows_path(@user) %>
+			    フォロワー
+			      <%= link_to @user.followed.count, user_followers_path(@user) %>
+        </div>
 
-					<!-- フォローボタン -->
-			          <% if current_user != @user %>
-			            <% if current_user.following?(@user) %>
-			              <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete %>
-			            <% else %>
-			              <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST %>
-			            <% end %>
-			          <% end %>
+				<div class ="user-show-text">
+          <% if current_user != @user %>
+            <% if current_user.following?(@user) %>
+              <%= link_to user_relationships_path(@user.id), method: :delete do %>
+                <button type="button" style='width: 150px;', class="btn btn-danger"><i class="fas fa-users"></i> フォローを外す</button>
+              <% end %>
+            <% else %>
+              <%= link_to user_relationships_path(@user.id), method: :POST do %>
+                <button type="button" style='width: 150px;', class="btn btn-primary"><i class="fas fa-users"></i> フォローする</button>
+              <% end %>
+            <% end %>
+          <% end %>
+			  </div>
 
+				<div class ="user-show-text">
 			    <% if @user.id != current_user.id %>
 					  <% if @is_room == true %>
-
 					    <p><a href="/rooms/<%= @room_id %>">チャットへ</a></p>
 					  <% else %>
 					  	<%= form_with model: Room.new, url: rooms_path, method: :post, data: {remote: false} do |f| %>
 					  	<!-- 　　　hidden_fieldでルームコントローラに飛ばしてユーザールームのストロングパラメータを使用する。 -->
-						      <%= hidden_field_tag 'user_room[user_id]', @user.id %>
+						    <%= hidden_field_tag 'user_room[user_id]', @user.id %>
 					    <%= f.submit "チャットを始める" %>
 					  　<% end %>
 					  <% end %>
 					<% end %>
+				</div>
 
 
 
 		  </div>
-		  <div class="belong-team-list-box">
-		  	<div class="belong-team-list">
-		      <p>所属チーム一覧</p>
-		    </div>
-		     <%= render "teams/index", team: @team %>
-		  </div>
+		    <!-- 他者のユーザー詳細ページの時のみ、チームを表示 -->
+		  <% if @user.id != current_user.id %>
+			  <div class="belong-team-list-box">
+			  	<div class="belong-team-list">
+			      <p>所属チーム一覧 <%= @teams.count %>件</p>
+			    </div>
+			     <%= render "teams/index", team: @team %>
+			  </div>
+			<% end %>
 	  </div>
 
 
