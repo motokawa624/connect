@@ -277,6 +277,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.4)
+    rinku (2.0.6)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
@@ -397,6 +398,7 @@ DEPENDENCIES
   ransack
   refile!
   refile-mini_magick
+  rinku
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
