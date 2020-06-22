@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 20, minimum: 2}
 
   # ユーザーエリアの選択
   enum place: {
