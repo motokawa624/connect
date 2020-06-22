@@ -23,12 +23,11 @@
 				</div>
 
 				<div class="user-show-text">
-    			<%#= raw Rinku.auto_link(h(@user.url)) do %>
-     				<!-- <i class="fab fa-github-square"></i> -->
-    			<%# end %>
-    			<%= link_to @user.url, target: :_blank do %>
-    				<i class="fab fa-github-square fa-3x"></i>
-    			<% end %>
+					<% if @user.url.present? %>
+	    			<%= link_to @user.url, target: :_blank do %>
+	    				<i class="fab fa-github-square fa-3x"></i>
+	    			<% end %>
+	    		<% end %>
      		</div>
 
 				<div class ="user-show-text">

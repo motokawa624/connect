@@ -71,10 +71,11 @@
 
 						<p><span class="team-title">チームについて</span></p>
 						<p class="introduction"><%= @team.introduction %></p>
-
-					  <%= link_to @team.url, target: :_blank do %>
-		  				<i class="fab fa-github-square fa-3x"></i>
-		  			<% end %>
+            <% if @team.url.present? %>
+						  <%= link_to @team.url, target: :_blank do %>
+			  				<i class="fab fa-github-square fa-3x"></i>
+			  			<% end %>
+			  		<% end %>
 
 					</div>
 			</div>

@@ -13,7 +13,7 @@ describe 'ユーザー認証にテスト' do
         fill_in 'user[password_confirmation]', with: 'password'
         click_button 'ユーザー登録'
 
-        expect(page).to have_content '成功しました'
+        expect(page).to have_content 'アカウント登録が完了しました。'
       end
       it '新規登録に失敗する' do
         fill_in 'user[name]', with: ''
@@ -34,10 +34,9 @@ describe 'ユーザー認証にテスト' do
     context 'ログイン画面に遷移' do
       let(:test_user) { user }
       it 'ログインに成功する' do
-        fill_in 'user[email]', with: Faker::Internet.email
+        fill_in 'user[email]', with: test_user.email
         fill_in 'user[password]', with: test_user.password
         click_button 'ログイン'
-
         expect(page).to have_content "ログインしました。"
       end
 
