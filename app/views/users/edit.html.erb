@@ -6,6 +6,15 @@
 
 
   <div class ="col-md-10">
+  	<% if @user.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+    		<ul>
+      		<% @user.errors.full_messages.each do |message| %>
+        		<li><%= message %></li>
+    			<% end %>
+    		</ul>
+  		</div>
+		<% end %>
 
 		<%= form_for(@user) do |f| %>
 
