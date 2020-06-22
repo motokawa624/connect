@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ユーザー認証にテスト' do
+describe 'ユーザー認証のテスト' do
   describe 'ユーザー新規登録' do
     before do
       visit new_user_registration_path
@@ -22,7 +22,7 @@ describe 'ユーザー認証にテスト' do
         fill_in 'user[password_confirmation]', with: ''
         click_button 'ユーザー登録'
 
-        expect(page).to have_content 'n4 件のエラーが発生したため user は保存されませんでした'
+        expect(page).to have_content 'エラーが発生したため user は保存されませんでした'
       end
     end
   end
@@ -43,7 +43,7 @@ describe 'ユーザー認証にテスト' do
       it 'ログインに失敗する' do
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
-        click_button "ログアウト"
+        click_button "ログイン"
 
         expect(current_path).to eq(new_user_session_path)
       end
@@ -54,7 +54,6 @@ end
 describe 'ユーザーのテスト' do
   let(:user) { create(:user) }
   let!(:test_user2) { create(:user) }
-  let!(:team) { create(:team, user: user) }
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -81,7 +80,7 @@ describe 'ユーザーのテスト' do
       end
       it 'マイチームリンクが表示される' do
         visit user_path(user)
-        expect(page).to have_link '', href: home_path(user)
+        expect(page).to have_link '', href: home_path
       end
     end
   end
