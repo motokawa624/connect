@@ -1,10 +1,10 @@
 	<div class="new-field">
-	<% if @team.errors.any? %>
-　　<% @team.errors.full_messages.each do |message| %>
-　　  <%= message %>⚠︎<br>
-　　	<% end %>
-	<% end %>
-		</div>
+		<% if @team.errors.any? %>
+	　　<% @team.errors.full_messages.each do |message| %>
+	　　  <%= message %>⚠︎<br>
+	　　	<% end %>
+		<% end %>
+	</div>
 
   <div class="new-field">
 	  <div class="col-md-3"></div> <!-- 空div -->

@@ -7,11 +7,11 @@
 		<tr>
 			<th class="sidebar-content">名前：<%= current_user.name %></th>
 		</tr>
-			<th class="sidebar-content"><%= link_to "#{user.follower.count}フォロー", user_follows_path(user) %></th>
+			<th class="sidebar-content"><%= link_to "#{user.follower.count}フォロー", user_follows_path(user), class: "follow-link" %></th>
 		</tr>
 
 		<tr>
-			<th class="sidebar-content"><%= link_to "#{user.followed.count}フォロワー", user_followers_path(user)%></th>
+			<th class="sidebar-content"><%= link_to "#{user.followed.count}フォロワー", user_followers_path(user), class: "follow-link" %></th>
 		</tr>
 
 		<tr>
