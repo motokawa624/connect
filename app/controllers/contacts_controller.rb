@@ -7,15 +7,13 @@ class ContactsController < ApplicationController
   end
 
   def create
-    # params[:contact][:email]
-    # params[:email]
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
-      flash[:success] = 'お問い合わせを受け付けました'
-      redirect_to root_path
+      redirect_to thanks_path
     else
-      render :new
+      @contact = Contact.new(contact_params)
+      render template: 'home/top'
     end
   end
 

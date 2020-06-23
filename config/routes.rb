@@ -31,5 +31,7 @@ Rails.application.routes.draw do
 
   get 'home' => 'teams#home'
 
+  get 'thanks' => 'contacts#thanks'
+
   resources :contacts, only: %i[new create]
 end
