@@ -1,8 +1,8 @@
 <div class="topimage">
 	<div id="theTarget">
-		<div class="top1"><%= render "toptext" %></div>
-		<div class="top2"><%= render "toptext" %></div>
-		<div class="top3"><%= render "toptext" %></div>
+		<div class="top1"><%= render "home/toptext" %></div>
+		<div class="top2"><%= render "home/toptext" %></div>
+		<div class="top3"><%= render "home/toptext" %></div>
 	</div>
 
 </div>
@@ -68,11 +68,14 @@
     <div class="col-md-12">
       <div class="contact-top">
       	<div class="contact-top-header">
-      		<% if @contact.errors.any? %>
-				　　<% @contact.errors.full_messages.each do |message| %>
+      		<!-- エラーまたはエラーメッセージがあれば表示 -->
+      		<% if @contact.errors.any? || @error_messages&.present? %>
+      			<% errors = @contact.errors.full_messages if @contact.errors.any? %>
+      			<% errors = @error_messages if @error_messages&.present? %>
+				　　<% errors.each do |message| %>
 				　　  <%= message %>⚠︎<br>
 				　　	<% end %>
-					<% end %>
+			<% end %>
 		 		 <h2>お問い合わせ</h2>
 				</div>
 			<%= form_for @contact, url: contacts_path do |f| %>
