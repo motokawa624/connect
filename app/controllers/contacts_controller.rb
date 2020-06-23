@@ -12,12 +12,14 @@ class ContactsController < ApplicationController
       ContactMailer.contact_mail(@contact).deliver
       redirect_to thanks_path
     else
-      @contact = Contact.new(contact_params)
-      render template: 'home/top'
+      # ホームコントローラにエラーメッセージのパラメータを渡す
+      redirect_to root_path(messages: @contact.errors.full_messages)
+      # render template: 'home/top'
     end
   end
 
-  def thanks; end
+  def thanks
+  end
 
   private
 
