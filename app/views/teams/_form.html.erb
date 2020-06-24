@@ -1,78 +1,78 @@
-	<div class="new-field">
-		<% if @team.errors.any? %>
-	　　<% @team.errors.full_messages.each do |message| %>
-	　　  <%= message %>⚠︎<br>
-	　　	<% end %>
-		<% end %>
-	</div>
+<div class="new-field">
+	<% if @team.errors.any? %>
+　　<% @team.errors.full_messages.each do |message| %>
+　　  <%= message %>⚠︎<br>
+　　	<% end %>
+	<% end %>
+</div>
 
-  <div class="new-field">
-	  <div class="col-md-3"></div> <!-- 空div -->
-	  <div class="col-md-2">
-		  <%= f.label :name, "チーム名  (必須)" %>
-	  </div>
-	  <div class="col-md-7">
-			<%= f.text_field :name, placeholder: "cssでデザイン勉強会など", required: true %>
-		</div>
-	</div>
-
-  <div class="new-field">
-	  <div class="col-md-3"></div> <!-- 空div -->
-    <div class="col-md-2">
-    	<%= f.label :place, "エリア" %>
-    </div>
-    <div class="col-md-7">
-  	  <%= f.select :place, User.places.keys.to_a, {} %>
-	  </div>
-	</div>
-
-	<div class="new-field">
-		<div class="col-md-3"></div> <!-- 空div -->
-	  <div class="col-md-2">
-	  	<%= f.label :introduction, "説明  (必須)"%>
-	  </div>
-	  <div class="col-md-7">
-	  	<%= f.text_area :introduction, placeholder: "あなたがこのチームでやりたいこと", required: true %>
-	  </div>
-	</div>
-
-  <div class="new-field">
-		<div class="col-md-3"></div> <!-- 空div -->
-	  <div class="col-md-2">
-	    <%= f.label :url, "github url"%>
-	  </div>
-	  <div class="col-md-7">
-	    <%= f.text_field :url, placeholder: "チームのgithub urlがあればご記入ください" %>
-	  </div>
-	</div>
-
-  <div class="new-field">
-		<div class="col-md-3"></div> <!-- 空div -->
-	  <div class="col-md-2">
-	    <%= f.label :tag_list %>
-	  </div>
-	  <div class="col-md-7">
-	    <%= f.text_field :tag_list, value: @team.tag_list.join(','), placeholder: "html,css など" %>
-	  </div>
-	</div>
-
-  <div class="new-field">
-	  <div class="col-md-3"></div> <!-- 空div -->
-	  <div class="col-md-2">
-	  	<%= f.label :team_imege %>
-	  </div>
-	  <div class="col-md-7">
-	  <%= f.attachment_field :team_image %>
-	  </div>
+<div class="new-field">
+  <div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+	  <%= f.label :name, "チーム名  (必須)" %>
   </div>
-
-  <div class="new-field">
-	  <div class="col-md-3"></div> <!-- 空div -->
-	  <div class="col-md-2">
-	    <%= f.label :is_status, "募集状況" %><br />
-	  </div>
-	  <div class="col-md-7">
-		<label><%= f.radio_button :is_status, "true" %>募集中</label>
-	    <lavel><%= f.radio_button :is_status, "false" %>募集停止中</lavel>
-	  </div>
+  <div class="col-md-7">
+		<%= f.text_field :name, placeholder: "cssでデザイン勉強会など", required: true %>
 	</div>
+</div>
+
+<div class="new-field">
+  <div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+  	<%= f.label :place, "エリア" %>
+  </div>
+  <div class="col-md-7">
+	  <%= f.select :place, User.places.keys.to_a, {} %>
+  </div>
+</div>
+
+<div class="new-field">
+	<div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+  	<%= f.label :introduction, "説明  (必須)"%>
+  </div>
+  <div class="col-md-7">
+  	<%= f.text_area :introduction, placeholder: "あなたがこのチームでやりたいこと", required: true %>
+  </div>
+</div>
+
+<div class="new-field">
+	<div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+    <%= f.label :url, "github url"%>
+  </div>
+  <div class="col-md-7">
+    <%= f.text_field :url, placeholder: "チームのgithub urlがあればご記入ください" %>
+  </div>
+</div>
+
+<div class="new-field">
+	<div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+    <%= f.label :tag_list %>
+  </div>
+  <div class="col-md-7">
+    <%= f.text_field :tag_list, value: @team.tag_list.join(','), placeholder: "html,css など" %>
+  </div>
+</div>
+
+<div class="new-field">
+  <div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+  	<%= f.label :team_imege %>
+  </div>
+  <div class="col-md-7">
+  <%= f.attachment_field :team_image %>
+  </div>
+</div>
+
+<div class="new-field">
+  <div class="col-md-3"></div> <!-- 空div -->
+  <div class="col-md-2">
+    <%= f.label :is_status, "募集状況" %><br />
+  </div>
+  <div class="col-md-7">
+	<label><%= f.radio_button :is_status, "true" %>募集中</label>
+    <lavel><%= f.radio_button :is_status, "false" %>募集停止中</lavel>
+  </div>
+</div>

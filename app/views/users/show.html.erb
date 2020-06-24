@@ -1,6 +1,4 @@
-
 <h3 class="member-show-head">メンバー詳細</h3>
-
 
 <div class="container-fluid">
   <div class="row">
@@ -63,6 +61,7 @@
 
 				<div class ="user-show-text">
 			    <% if @user.id != current_user.id %>
+			      <!-- 既にチャットしたことあるなら、チャットへ。ないならチャットを始める。 -->
 					  <% if @is_room == true %>
 					    <p><a href="/rooms/<%= @room_id %>">チャットへ</a></p>
 					  <% else %>

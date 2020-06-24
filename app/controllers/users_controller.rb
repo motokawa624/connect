@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # 現在ログインしているユーザーと、「チャットへ」を押されたユーザーの両方をuser_roomテーブルに記録するコード
     @current_user_rooms = UserRoom.where(user_id: current_user.id)
     @user_user_rooms = UserRoom.where(user_id: @user.id)
     unless @user.id == current_user.id

@@ -28,15 +28,20 @@ class User < ApplicationRecord
   has_many :owner_teams, class_name: 'Team', foreign_key: 'owner_user_id'
   has_many :teams, through: :belongs
 
+  # いいねのアソシエーション
   has_many :favorites, dependent: :destroy
 
+  # コメント機能のアソシエーション
   has_many :post_comments, dependent: :destroy
+
   # チームに所属するためのアソシエーション
   has_many :belongs
+
   # チャットのアソシエーション
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
+
   # フォロー機能のアソシエーション
   has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy # フォロー取得
   has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy # フォロワー取得

@@ -5,6 +5,7 @@ class Team < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :belongs, dependent: :destroy
 
+  # 作成者の権限が欲しかったので,owner_userのkeyを作成しました。
   belongs_to :owner_user, class_name: 'User', foreign_key: 'owner_user_id'
   has_many :users, through: :belongs, dependent: :destroy
   # teamを保存するのと同時にbelongsを更新できるようにしています。
@@ -14,6 +15,7 @@ class Team < ApplicationRecord
     favorites.where(user_id: user.id, team_id: id).exists?
   end
 
+  # 所属の機能は、いいね機能と構造は同じです。
   def belonged_by?(user)
     belongs.where(user_id: user.id).exists?
   end

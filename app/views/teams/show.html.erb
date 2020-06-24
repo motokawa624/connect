@@ -1,5 +1,6 @@
 	<div class="team-show-header">
 		<span class="team-show-header-text"><%= @team.name %></span>
+		<!-- チームオーナーの場合のみ、編集と削除可能 -->
     <% if @team.owner_user == current_user %>
 	 	  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
 	    <%= link_to '削除する', team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
@@ -28,6 +29,7 @@
 	    </div>
 
 	    <div class="col-md-3">
+	    	<!-- 下記はメンバー一覧を表示 -->
 				<p class="team-show-member">メンバー
 				  <% if @team.is_status == true %>
 				  	募集中
@@ -53,7 +55,7 @@
 						    <% end %>
 				  	  <% end %>
 				  	  <div class="team-belong-btn">
-					  	  <!-- チームオーナーじゃなかったら表示 -->
+					  	  <!-- チームオーナーじゃなかったらチームに所属するボタン表示 -->
 							  <% if current_user != @team.owner_user %>
 									<% if @team.belonged_by?(current_user) %>
 									  <%= link_to team_belongs_path(@team), method: :delete do %>
@@ -94,7 +96,7 @@
 		<% end %>
   <div class="container">
 		<p class="comment-list">コメント一覧</p>
-
+		<!-- コメントの非同期通信 -->
     <div class=<%="comment_#{@team.id}"%>>
       <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
     </div>

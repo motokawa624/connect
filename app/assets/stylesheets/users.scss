@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//全体
 .box-content {
 	margin: 30px 30px 100px 30px;
 	flex-wrap: wrap;
@@ -12,7 +13,7 @@
 	text-align: center;
 }
 
-
+//ログイン関係
 .sign-up-row {
 	height: 380px;
 }
@@ -83,6 +84,7 @@
 .user-index-name {
 	font-weight: bold;
 }
+
 //editページ
 .user-edit-area {
 	padding-left: 200px;
