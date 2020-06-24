@@ -1,26 +1,29 @@
 <h2 class="member-index-head">フォロワー</h2>
 <% if @users.count > 0 %>
-<div class="container-fluid">
-  <div class="row  user-index">
-  	<div class ="col-md-2 side-table">
-      <%= render "users/sidebar", user: current_user %>
-    </div>
-    <div class ="col-md-10">
-      <%= render "users/index", user: @users %>
+  <div class="container-fluid">
+    <div class="row  user-index">
+    	<div class ="col-md-2 side-table">
+        <%= render "users/sidebar", user: current_user %>
+      </div>
+      <div class ="col-md-10">
+        <%= render "users/index", user: @users %>
+      </div>
     </div>
   </div>
-</div>
 <% else %>
 
-<div class="container-fluid">
-  <div class="row  user-index">
-  	<div class ="col-md-2 side-table">
-			<%= render "/users/sidebar", user: current_user %>
-		</div>
-
-		  <p>フォロー中のユーザーはいません</p>
-	</div>
-</div>
+  <div class="container-fluid">
+    <div class="row  user-index">
+    	<div class ="col-md-2 side-table">
+  			<%= render "/users/sidebar", user: current_user %>
+  		</div>
+      <div class ="col-md-10">
+        <div class="follow-text">
+  		    <p>フォロワーはいません</p>
+        </div>
+      </div>
+  	</div>
+  </div>
 
 <% end %>
 
