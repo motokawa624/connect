@@ -86,7 +86,7 @@ describe 'ユーザーのテスト' do
       end
     end
   end
-end
+
 
   describe '編集のテスト' do
     context '自分の編集画面への遷移' do
