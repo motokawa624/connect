@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
-
   def new
     @contact = Contact.new
   end
@@ -18,8 +17,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  def thanks
-  end
+  def thanks; end
 
   private
 

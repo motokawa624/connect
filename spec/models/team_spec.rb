@@ -1,5 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
+<<<<<<< HEAD
+# Rspec.describe 'Teamモデルのテスト', type: :model do
+# 	describe 'バリデーションのテスト' do
+# 		let(:team) { build(:team) }
+=======
 RSpec.describe 'Teamモデルのテスト', type: :model do
 	describe 'バリデーションのテスト' do
 		it "チームネームがない場合、チーム登録に失敗すること" do
@@ -39,3 +46,4 @@ RSpec.describe 'Teamモデルのテスト', type: :model do
 end
 
 
+>>>>>>> develop

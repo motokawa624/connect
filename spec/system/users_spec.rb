@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'ユーザー認証のテスト' do
@@ -26,7 +28,7 @@ describe 'ユーザー認証のテスト' do
       end
     end
   end
-    describe 'ユーザーログイン' do
+  describe 'ユーザーログイン' do
     let(:user) { create(:user) }
     before do
       visit new_user_session_path
@@ -37,13 +39,13 @@ describe 'ユーザー認証のテスト' do
         fill_in 'user[email]', with: test_user.email
         fill_in 'user[password]', with: test_user.password
         click_button 'ログイン'
-        expect(page).to have_content "ログインしました。"
+        expect(page).to have_content 'ログインしました。'
       end
 
       it 'ログインに失敗する' do
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
-        click_button "ログイン"
+        click_button 'ログイン'
 
         expect(current_path).to eq(new_user_session_path)
       end
@@ -84,6 +86,7 @@ describe 'ユーザーのテスト' do
       end
     end
   end
+end
 
   describe '編集のテスト' do
     context '自分の編集画面への遷移' do
@@ -171,3 +174,4 @@ describe 'ユーザーのテスト' do
     end
   end
 end
+

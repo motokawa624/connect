@@ -2,7 +2,7 @@
 
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @teams = Team.page(params[:page]).reverse_order
   end
