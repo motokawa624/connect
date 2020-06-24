@@ -1,3 +1,96 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//背景色など
+.line-bc {
+  padding: 20px 0 20px 0;
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: right;
+  font-size: 14px;
+
+}
+
+//左側のコメント
+.other {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.other .icon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.other .icon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.other .chatting {
+  width: 100%;
+  text-align: left;
+}
+.talk {
+  display: inline-block;
+  position: relative; 
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.talk:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.talk p {
+  margin: 0;
+  padding: 0;
+}
+
+.chat-form {
+  width: 800px;
+  text-align: center;
+  padding-left: 300px;
+}
+
+
+
+//右側の緑コメント
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative; 
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}

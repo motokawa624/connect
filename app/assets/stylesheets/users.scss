@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//全体
 .box-content {
 	margin: 30px 30px 100px 30px;
 	flex-wrap: wrap;
@@ -12,10 +13,7 @@
 	text-align: center;
 }
 
-.user-index {
-
-}
-
+//ログイン関係
 .sign-up-row {
 	height: 380px;
 }
@@ -23,3 +21,74 @@
 .sign-field {
 	height: 60px;
 }
+
+
+//showページ
+.member-show-head {
+	text-align: center;
+	margin-bottom: 80px;
+}
+
+.belong-team-list-box{
+	margin: 80px;
+}
+
+.belong-team-list {
+	padding-left: 450px;
+    margin-bottom: 30px;
+}
+
+.user-show-box {
+	text-align: center;
+	padding-right: 300px;
+}
+
+.user-show-text {
+	margin-bottom: 10px;
+	.follow-link {
+    	color: #2f4f4f;
+    	padding: 5px;
+	}
+}
+
+.user-introduction-box {
+	width: 300px;
+	text-align: center;
+	margin-left: 425px;
+}
+
+
+
+//indexページ
+.member-index-head {
+	text-align: center;
+}
+
+
+.user-all-box {
+	width: 320px;
+	background-color: white;
+	text-align: center;
+	margin: 50px;
+	float: left;
+}
+
+.user-index-text {
+	margin-bottom: 10px;
+}
+
+.user-text {
+	margin: 10px;
+}
+
+.user-index-name {
+	font-weight: bold;
+}
+
+//editページ
+.user-edit-area {
+	padding-left: 200px;
+	margin: 50px;
+}
+
+

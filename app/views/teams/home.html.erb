@@ -1,0 +1,13 @@
+<h3 class="team-index-title">マイチーム一覧</h3>
+
+<div class="container-fluid ">
+  <div class="row">
+    <div class ="col-md-2 side-table">
+      <%= render "users/sidebar", user: current_user %>
+    </div>
+    <div class ="col-md-8 box-content">
+      <%= render "teams/index", team: @team %>
+    </div>
+  </div>
+</div>
+

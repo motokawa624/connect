@@ -1,0 +1,40 @@
+<% @teams.each do |team| %>
+  <div class="team-box">
+    <div class="team-all-box">
+        <%= link_to team do %>
+          <%= attachment_image_tag(team, :team_image, format: 'jpeg', size:'320x200', fallback: "/assets/no_image_team.jpg") %>
+        <% end %>
+      <div class="team-text-box">
+        <div class="team-text">
+          <span class="team-title">チーム名</span><br>
+          <%= team.name %>
+        </div>
+        <div class="team-text">
+          <span class="team-title">オーナー</span><br>
+            <%= link_to user_path(team.owner_user), class: "user-show-link" do %>
+              <%= attachment_image_tag team.owner_user, :profile_image, :fill, 100, 100, size: "25x25", fallback: "/no-image-icon.png", class: "img-circle" %>
+              <%= team.owner_user.name %>
+            <% end %>
+        </div>
+        <div class="team-text">
+          <span class="team-title">エリア</span><br>
+          <i class="fas fa-map-marker-alt"></i><%= team.place %>
+        </div>
+        <div class="team-text">
+          <span class="team-title">チームについて</span><br>
+          <!-- truncateは文字量を丸めるヘルパー -->
+          <%= truncate(team.introduction, length: 15) %>
+        </div>
+        <div class="iine">
+          <!-- favoriteコントローラーにはチームの記述がないので、クラスの中でチームidを指定する。 -->
+          <div class=<%="team_#{team.id}"%>>
+            <%= render "favorites/like", team: team %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

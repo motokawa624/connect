@@ -16,11 +16,12 @@
 	height: 600px;
 	width: 100%;
 	margin-bottom: 55px;
+	text-align: center;
 }
 
-
+//テキストレイアウト
 .about {
-	margin: 120px 0 35px 0;
+	margin: 20px 0 65px 0;
 }
 
 .container {
@@ -41,5 +42,18 @@
 }
 
 .row-top {
-	height : 200px;
+	height : 300px;
 }
+
+.contact-top {
+	padding-left: 200px;
+}
+
+.contact-top-header {
+	padding-left: 280px;
+}
+
+.team-about-text {
+	line-height: 40px;
+}
+

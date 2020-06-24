@@ -9,8 +9,8 @@
 	text-align :center;
 }
 
-.team-image-box {
-	width: 250px;
+.team-all-box {
+	width: 320px;
 	background-color: white;
 }
 
@@ -25,6 +25,10 @@
 
 .team-text {
 	padding-bottom: 10px;
+   .user-show-link {
+	    text-decoration: none;
+	    font-weight: bold;
+	    }
 }
 
 .team-title {
@@ -32,13 +36,16 @@
 }
 
 .iine {
+	padding: 10px;
 	text-align: center;
 }
 
-
+.team-box {
+	float: left;
+	margin: 0 60px 30px 0;
+}
 
 // showページ
-
 .team-container {
 	height: 1300px;
 }
@@ -46,6 +53,11 @@
 .team-show-header {
   text-align: center;
   margin: 100px;
+.btn-sm {
+    text-decoration: none;
+    color: #e6e6fa;
+    font-weight: bold;
+}
 }
 
 .team-show-header-text {
@@ -55,7 +67,7 @@
 }
 
 .team-show-row {
-	height: 400px;
+	height: 450px;
 }
 
 .team-show-tag {
@@ -84,12 +96,42 @@
 	text-align: center;
 }
 
+.team-show-image {
+	margin-left: 170px;
+}
+
+.team-show-member-box {
+	margin: 30px 0;
+}
+
+.team-show-member-text {
+	padding-bottom: 10px;
+	.user-show-link {
+    text-decoration: none;
+    font-weight: bold;
+    }
+}
+
+.team-show-iine {
+	margin-top: 10px;
+	font-size: 15px
+}
+
+.team-belong-btn {
+	margin-top: 10px;
+}
+
+
 
 // new editページ
+.new-team-page {
+	margin: 100px 0 300px 0;
+}
+
 .new-field {
 	height: 60px;
 }
 
-.new-button {
-	text-align: center;
+.new-team-submit {
+	padding-left: 500px;
 }

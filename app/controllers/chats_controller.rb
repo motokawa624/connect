@@ -1,25 +1,14 @@
-class ChatsController < ApplicationController
-  def show
-    @user = User.find(params[:id])
-    rooms = current_user.user_rooms.pluck(:room_id)
-    user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+# frozen_string_literal: true
 
-    unless user_rooms.nil?
-      @room = user_rooms.room
-    else
-      @room = Room.new
-      @room.save
-      UserRoom.create(user_id: current_user.id, room_id: @room.id)
-      UserRoom.create(user_id: @user.id, room_id: @room.id)
-    end
-    @chats = @room.chats
+class ChatsController < ApplicationController
+  def create
+    @chat = current_user.chats.new(chat_params)
+    @chat.save
   end
 
-  def create
-    @user = User.find(params[:id])
-    @room = Room.find(params[:id])
-     Chat.create(user_id: current_user.id, massege: params[:massage], room_id: @room.id )
-     Chat.create(user_id: @user.id, massege: params[:massage], room_id: @room.id )
-     rediret_to request.referer
+  private
+
+  def chat_params
+    params.require(:chat).permit(:message, :room_id, :user_id)
   end
 end

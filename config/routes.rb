@@ -1,28 +1,37 @@
-Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions',
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root 'home#top'
 
-  resources :users, only: [:index, :show, :edit, :update] do
-    resource :relationships, only: [:create, :destroy]
-      get 'follows' => 'relationships#follower', as: 'follows'
-      get 'followers' => 'relationships#followed', as: 'followers'
+  # ユーザーログインルーティング
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+  # ユーザールーティング
+  resources :users, only: %i[index show edit update] do
+    resource :relationships, only: %i[create destroy]
+    get 'follows' => 'relationships#follower', as: 'follows'
+    get 'followers' => 'relationships#followed', as: 'followers'
+  end
+  # チャットルーティング
+  resources :rooms, only: %i[create show]
+  resources :chats, only: [:create]
+
+  # チームルーティング
+  resources :teams, only: %i[index show new edit update create destroy] do
+    resources :post_comments, only: %i[create destroy]
+    resource :favorites, only: %i[create destroy]
+    resource :belongs, only: %i[create destroy]
   end
 
-  resources :teams, only: [:show, :new, :edit, :update, :create ,:destroy] do
-    resource :post_comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
-  end
-  get 'home' => 'teams#index'
-  get 'myteam' => 'teams#myteam'
+  get 'home' => 'teams#home'
 
-  resources :belongs, only: [:update]
-  get 'chat/:id' => 'chats#show', as: 'chat'
-  post 'chat/:id'=> 'chats#create'
-  post 'contact/:id' => 'contact#create'
+  get 'thanks' => 'contacts#thanks'
 
+  resources :contacts, only: %i[new create]
 end

@@ -1,8 +1,9 @@
 <div class="topimage">
+	<!-- 画像スライダー -->
 	<div id="theTarget">
-		<div class="top1"><%= render "toptext" %></div>
-		<div class="top2"><%= render "toptext" %></div>
-		<div class="top3"><%= render "toptext" %></div>
+		<div class="top1"><%= render "home/toptext" %></div>
+		<div class="top2"><%= render "home/toptext" %></div>
+		<div class="top3"><%= render "home/toptext" %></div>
 	</div>
 
 </div>
@@ -23,17 +24,17 @@
 	  <div class="col-sm-4 text-center">
 		<i class="fas fa-laptop-code fa-4x"></i>
 		<h3>チームで開発</h3>
-		<p>チームで助け合いプログラミング学習を継続し、</br>面白いサービスを作ってみましょう。</p>
+		<p>チームで助け合いプログラミング学習を継続し、</br>新しいサービスを作ってみましょう。</p>
 	  </div>
   </div>
 
 	<h2 class="text-center about">About</h2>
-  
+
   <div class="row-top">
   	<div class="col-sm-2"></div>
   	  <div class="col-sm-8 text-center">
-    	<p>connectは、プログラミングスクール卒業生が継続して学習を続けるためのコミュニティサイトです。</br>
-    	スクール在籍中には、メンターに質問すれば解決するためのヒントや回答が返ってきました。</br>しかし、卒業してしまえば自分一人の力で学習を続けるしかありません。エンジニアになるためには、新しい技術を学び続けることが姿勢が大切だと分かっていても、とても不安だと思います。</br>connectは、そのような継続学習の不安な人や学習意欲のある人を応援するコミュニティを作れます。</br>プログラミング学習に挫折しないため、スクール卒業生でプログラミングコミュニティを作ってみましょう。</p>
+    	<p class="team-about-text">connectは、プログラミングスクール卒業生が継続して学習を続けるためのコミュニティサイトです。</br>
+    	スクール在籍中には、メンターに質問すれば解決するためのヒントや回答が返ってきました。</br>しかし、卒業してしまえば自分一人の力で学習を続けるしかありません。エンジニアになるためには、新しい技術を学び続けることが姿勢が大切だと分かっていても、とても不安だと思います。</br>connectは、そのような継続学習の不安な人や学習意欲のある人で相互に応援出来るコミュニティを作れます。</br>プログラミング学習に挫折しないため、スクール卒業生でプログラミングコミュニティを作ってみましょう。</p>
 	  <div class="col-sm-2"></div>
     </div>
   </div>
@@ -60,6 +61,33 @@
 			<h3>Output</h3>
 			<p>開発した成果をアウトプットしよう！</p>
 		</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="contact-top">
+      	<div class="contact-top-header">
+      		<!-- エラーまたはエラーメッセージがあれば表示 -->
+      		<% if @contact.errors.any? || @error_messages&.present? %>
+      			<% errors = @contact.errors.full_messages if @contact.errors.any? %>
+      			<% errors = @error_messages if @error_messages&.present? %>
+				　　<% errors.each do |message| %>
+				　　  <%= message %>⚠︎<br>
+				　　	<% end %>
+			<% end %>
+		 		 <h2>お問い合わせ</h2>
+				</div>
+			<%= form_for @contact, url: contacts_path do |f| %>
+				<%= f.label :email, "メールアドレス" %><br>
+				<%= f.text_field :email, placeholder: 'メールアドレス', size: "50x5" %><br>
+				<%= f.label :message, "お問い合わせ内容" %><br>
+				<%= f.text_area :message, placeholder: 'お問い合わせ内容をご記入ください', size: "80x20" %><br>
+				<%= f.submit '送信する', class: "btn btn-default" %>
+			<% end %>
+	  </div>
+	</div>
   </div>
 </div>
 

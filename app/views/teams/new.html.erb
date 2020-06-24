@@ -1,10 +1,17 @@
-<%= render "users/sidebar", user: current_user %>
-<div class="container">
+<h3 class="team-index-title">チームを登録</h3>
+
+<div class="container-fluid new-team-page">
 	<div class = "row">
-		<%= form_for(@team, url: teams_path) do |f| %>
-      <%= render "teams/form", f: f %>
-      <div class="col-md-3"></div> <!-- 空div -->
-			<%= f.submit "新規登録", class: 'btn btn-primary col-xs-6'%>
-	  <% end %>
+		<div class ="col-md-2 side-table">
+	    <%= render "users/sidebar", user: current_user %>
+	  </div>
+	  <div class="col-md-8">
+			<%= form_for(@team, url: teams_path) do |f| %>
+	      <%= render "teams/form", f: f %>
+	    <div class="new-team-submit">
+				<%= f.submit "新規登録", class: 'btn btn-primary'%>
+			</div>
+		  <% end %>
+	  </div>
 	</div>
 </div>

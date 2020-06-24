@@ -1,26 +1,45 @@
-<h1>DM</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
 
-<h4>参加者</h4>
-<% @user_rooms.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
+      <div class="line-bc">
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+              <div class="mycomment">
+                <p style="text-align: right;">
+                  <%= chat.created_at.strftime('%m/%d') %>
+                  <%= chat.message %>
+                </p>
+              </div>
+          <% else %>
+            <div class="other">
+              <div class="icon">
+                <p style="text-align: left;">
+                  <%= attachment_image_tag chat.user, :profile_image, format: 'jpg', size: "25x25", fallback: "no_image.jpg", class: "img-circle" %>
+                   <%= chat.created_at.strftime('%m/%d') %>
+                </p>
+              </div>
+              <div class="chatting">
+                <div class="talk">
+                  <p>
+                    <%= chat.created_at.strftime('%m/%d') %>
+                    <%= chat.message %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="chat-form">
+        <%= form_with model: @chat, data: {remote: true} do |f| %>
+          <%= f.text_field :message %>
+          <%= f.hidden_field :room_id, :value => @room.id %>
+          <%= f.submit '送信' %>
+        <% end %>
+      </div>
 
-<hr>
-<% if @chats.present? %>
-  <% @chats.each do |m| %>
-    <strong><%= m.message %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
-
-<%= form_for @chat do |f| %>
-  <%= f.text_field :message, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
-
-<%= link_to "ユーザー一覧に戻る", users_path %>
+    </div>
+  </div>
+</div>
