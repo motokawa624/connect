@@ -75,7 +75,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 # レイアウト用gem
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # アプリ内の動的処理
 gem 'jquery-rails'
