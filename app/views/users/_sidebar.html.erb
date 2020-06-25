@@ -1,23 +1,23 @@
 <table class="sidebar">
-	<tr>
-		<th class="sidebar-content"><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/no-image-icon.png", class: "img-circle") %></th>
-	</tr>
+  <tr>
+    <th class="sidebar-content"><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/no-image-icon.png", class: "img-circle") %></th>
+  </tr>
 
-	<tr>
-		<th class="sidebar-content">名前：<%= current_user.name %></th>
-	</tr>
-		<th class="sidebar-content"><%= link_to "#{user.follower.count}フォロー", user_follows_path(user), class: "follow-link" %></th>
-	</tr>
+  <tr>
+    <th class="sidebar-content">名前：<%= current_user.name %></th>
+  </tr>
+    <th class="sidebar-content"><%= link_to "#{user.follower.count}フォロー", user_follows_path(user), class: "follow-link" %></th>
+  </tr>
 
-	<tr>
-		<th class="sidebar-content"><%= link_to "#{user.followed.count}フォロワー", user_followers_path(user), class: "follow-link" %></th>
-	</tr>
+  <tr>
+    <th class="sidebar-content"><%= link_to "#{user.followed.count}フォロワー", user_followers_path(user), class: "follow-link" %></th>
+  </tr>
 
-	<tr>
-		<th class="sidebar-content"><%= link_to "マイページ", user_path(current_user), class: "btn btn-info" %></th>
-	</tr>
+  <tr>
+    <th class="sidebar-content"><%= link_to "マイページ", user_path(current_user), class: "btn btn-info" %></th>
+  </tr>
 
-	<tr>
-		<th class="sidebar-content"><%= link_to "マイチーム", home_path, class: "btn btn-info" %></th>
-	</tr>
+  <tr>
+    <th class="sidebar-content"><%= link_to "マイチーム", home_path, class: "btn btn-info" %></th>
+  </tr>
 </table>

@@ -2,15 +2,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-		<h2>お問い合わせ</h2>
+      <h2>お問い合わせ</h2>
 
-		<%= form_for @contact, url: contacts_path do |f| %>
-			<%= f.label :email %><br>
-			<%= f.text_field :email, placeholder: 'メールアドレス', size: "50x5" %><br>
-			<%= f.label :message %><br>
-			<%= f.text_area :message, placeholder: 'お問い合わせ内容をご記入ください', size: "80x20" %><br>
-			<%= f.submit '送信する', class: "btn btn-default" %>
-		<% end %>
-	</div>
+      <%= form_for @contact, url: contacts_path do |f| %>
+        <%= f.label :email %><br>
+        <%= f.text_field :email, placeholder: 'メールアドレス', size: "50x5" %><br>
+        <%= f.label :message %><br>
+        <%= f.text_area :message, placeholder: 'お問い合わせ内容をご記入ください', size: "80x20" %><br>
+        <%= f.submit '送信する', class: "btn btn-default" %>
+      <% end %>
+    </div>
   </div>
 </div>

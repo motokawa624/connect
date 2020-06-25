@@ -1,16 +1,16 @@
 <h3 class="team-index-title">チームを編集</h3>
 
 <div class="container-fluid new-team-page">
-	<div class = "row">
-		<div class ="col-md-2 side-table">
-			<%= render "users/sidebar", user: current_user %>
-		</div>
-		<div class="col-md-8">
-		  <%= form_for(@team) do |f| %>
-	        <%= render "teams/form", f: f %>
-	        <div class="col-md-3"></div> <!-- 空div -->
-		    <%= f.submit "更新する", class: 'btn btn-primary col-xs-6'%>
-		  <% end %>
-		</div>
-	</div>
+  <div class = "row">
+    <div class ="col-md-2 side-table">
+      <%= render "users/sidebar", user: current_user %>
+    </div>
+    <div class="col-md-8">
+      <%= form_for(@team) do |f| %>
+          <%= render "teams/form", f: f %>
+          <div class="col-md-3"></div> <!-- 空div -->
+        <%= f.submit "更新する", class: 'btn btn-primary col-xs-6'%>
+      <% end %>
+    </div>
+  </div>
 </div>

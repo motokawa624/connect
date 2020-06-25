@@ -1,105 +1,101 @@
-	<div class="team-show-header">
-		<span class="team-show-header-text"><%= @team.name %></span>
-		<!-- チームオーナーの場合のみ、編集と削除可能 -->
+  <div class="team-show-header">
+    <span class="team-show-header-text"><%= @team.name %></span>
+    <!-- チームオーナーの場合のみ、編集と削除可能 -->
     <% if @team.owner_user == current_user %>
-	 	  <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
-	    <%= link_to '削除する', team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
+      <%= link_to '編集する', edit_team_path(@team), class: "btn-sm btn-success edit_book_#{@team.id}" %>
+      <%= link_to '削除する', team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_team_#{@team.id}"%>
     <% end %>
-	</div>
+  </div>
 
-	<div class="container-fluid team-container">
+  <div class="container-fluid team-container">
     <div class="team-show-row">
 
-    	<div class="col-md-2 side-table">
+      <div class="col-md-2 side-table">
         <%= render "users/sidebar", user: current_user %>
       </div>
-	  	<div class="col-md-4 team-show-image">
-				<%= attachment_image_tag(@team, :team_image, fallback: "/no_image_team.jpg", size:'500x330') %><br>
-				<div class="team-show-tag">
-					<% @team.tag_list.each do |tag| %>
-	          <span class="label label-primary"><%= tag %></span>
-	        <% end %>
-	      </div>
-    		<!-- いいね機能 -->
-    		<div class="team-show-iine">
-			    <div class=<%="team_#{@team.id}"%>>
-	          <%= render "favorites/like", team: @team %>
-	        </div>
-	      </div>
-	    </div>
+      <div class="col-md-4 team-show-image">
+        <%= attachment_image_tag(@team, :team_image, fallback: "/no_image_team.jpg", size:'500x330') %><br>
+        <div class="team-show-tag">
+          <% @team.tag_list.each do |tag| %>
+            <span class="label label-primary"><%= tag %></span>
+          <% end %>
+        </div>
+        <!-- いいね機能 -->
+        <div class="team-show-iine">
+          <div class=<%="team_#{@team.id}"%>>
+            <%= render "favorites/like", team: @team %>
+          </div>
+        </div>
+      </div>
 
-	    <div class="col-md-3">
-	    	<!-- 下記はメンバー一覧を表示 -->
-				<p class="team-show-member">メンバー
-				  <% if @team.is_status == true %>
-				  	募集中
-      		<% else %>
-				  	募集停止中
-      		<% end %>
-      	</p>
-					<div class="team-show-member-box">
-					  <div class="team-show-member-text">
-					    <span class="team-title">オーナー</span><br>
-						    <%= link_to user_path(@team.owner_user), class: "user-show-link" do %>
-						  	  <%= attachment_image_tag @team.owner_user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
-						  	  <%= @team.owner_user.name %><br>
-						  	<% end %>
-				    </div>
+      <div class="col-md-3">
+        <!-- 下記はメンバー一覧を表示 -->
+        <p class="team-show-member">メンバー
+          <% if @team.is_status == true %>
+            募集中
+          <% else %>
+            募集停止中
+          <% end %>
+        </p>
+          <div class="team-show-member-box">
+            <div class="team-show-member-text">
+              <span class="team-title">オーナー</span><br>
+                <%= link_to user_path(@team.owner_user), class: "user-show-link" do %>
+                  <%= attachment_image_tag @team.owner_user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
+                  <%= @team.owner_user.name %><br>
+                <% end %>
+            </div>
 
-						<div class="team-show-member-text">
-					 	  <span class="team-title">メンバー</span><br>
-					    <% @belongs.each do |belong| %>
-					    	<%= link_to user_path(belong.user), class: "user-show-link" do %>
-						      <%= attachment_image_tag belong.user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
-						      <%= belong.user.name %>
-						    <% end %>
-				  	  <% end %>
-				  	  <div class="team-belong-btn">
-					  	  <!-- チームオーナーじゃなかったらチームに所属するボタン表示 -->
-							  <% if current_user != @team.owner_user %>
-									<% if @team.belonged_by?(current_user) %>
-									  <%= link_to team_belongs_path(@team), method: :delete do %>
-									  	<button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
-								    <% end %>
-									<% else %>
-									  <!-- メンバーを募集していたら参加可能 -->
-										<% if @team.is_status == true %>
-									    <%= link_to team_belongs_path(@team), method: :post do %>
-									    	<button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
-									    <% end %>
-									  <% end %>
-									<% end %>
-			        	<% end %>
-			        </div>
-		        </div>
+            <div class="team-show-member-text">
+              <span class="team-title">メンバー</span><br>
+                <% @belongs.each do |belong| %>
+                  <%= link_to user_path(belong.user), class: "user-show-link" do %>
+                    <%= attachment_image_tag belong.user, :profile_image, :fill, 100, 100, size: "30x30", fallback: "/no-image-icon.png", class: "img-circle" %>
+                    <%= belong.user.name %>
+                  <% end %>
+                <% end %>
+              <div class="team-belong-btn">
+                <!-- チームオーナーじゃなかったらチームに所属するボタン表示 -->
+                <% if current_user != @team.owner_user %>
+                  <% if @team.belonged_by?(current_user) %>
+                    <%= link_to team_belongs_path(@team), method: :delete do %>
+                      <button type="button" style='width: 245px;', class="btn btn-warning"><i class="fas fa-running"></i> 脱退する</button>
+                    <% end %>
+                  <% else %>
+                    <!-- メンバーを募集していたら参加可能 -->
+                    <% if @team.is_status == true %>
+                      <%= link_to team_belongs_path(@team), method: :post do %>
+                        <button type="button" style='width: 245px;', class="btn btn-primary"><i class="fas fa-users"></i> メンバーになる</button>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
 
 
 
-						<p><span class="team-title">チームについて</span></p>
-						<p class="introduction"><%= @team.introduction %></p>
+            <p><span class="team-title">チームについて</span></p>
+            <p class="introduction"><%= @team.introduction %></p>
             <% if @team.url.present? %>
-						  <%= link_to @team.url, target: :_blank do %>
-			  				<i class="fab fa-github-square fa-3x"></i>
-			  			<% end %>
-			  		<% end %>
+              <%= link_to @team.url, target: :_blank do %>
+                <i class="fab fa-github-square fa-3x"></i>
+              <% end %>
+            <% end %>
 
-					</div>
-			</div>
+        </div>
+      </div>
 
 
-	</div>
+  </div>
 
-		<% if @post_comment.errors.any? %>
-	　　<% @post_comment.errors.full_messages.each do |message| %>
-	　　  <%= message %>⚠︎<br>
-	　　	<% end %>
-		<% end %>
+
   <div class="container">
-		<p class="comment-list">コメント一覧</p>
-		<!-- コメントの非同期通信 -->
+    <p class="comment-list">コメント一覧</p>
+    <!-- コメントの非同期通信 -->
     <div class=<%="comment_#{@team.id}"%>>
       <%= render "post_comments/post_comment", team: @team, post_comment: @post_comment %>
     </div>
-	</div>
+  </div>
 
 
