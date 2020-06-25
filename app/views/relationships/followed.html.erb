@@ -2,7 +2,7 @@
 <% if @users.count > 0 %>
   <div class="container-fluid">
     <div class="row  user-index">
-    	<div class ="col-md-2 side-table">
+      <div class ="col-md-2 side-table">
         <%= render "users/sidebar", user: current_user %>
       </div>
       <div class ="col-md-10">
@@ -14,15 +14,15 @@
 
   <div class="container-fluid">
     <div class="row  user-index">
-    	<div class ="col-md-2 side-table">
-  			<%= render "/users/sidebar", user: current_user %>
-  		</div>
+      <div class ="col-md-2 side-table">
+        <%= render "/users/sidebar", user: current_user %>
+      </div>
       <div class ="col-md-10">
         <div class="follow-text">
-  		    <p>フォロワーはいません</p>
+          <p>フォロワーはいません</p>
         </div>
       </div>
-  	</div>
+    </div>
   </div>
 
 <% end %>
