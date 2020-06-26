@@ -3,7 +3,7 @@
     <div class="user-all-box">
       <div class="user-text">
         <%= link_to user, class: "user_#{user.id}" do %>
-          <%= attachment_image_tag(user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/no-image-icon.png", class: "img-circle") %>
+          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, size: "90x90", fallback: "/assets/no-image-icon.png", class: "img-circle" %>
         <% end %>
       </div>
       <div class="user-index-text">
