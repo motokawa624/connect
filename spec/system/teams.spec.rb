@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'チーム機能', type: :system do
+describe 'チーム機能', type: :system do
   let(:user) { create(:user) }
   let!(:user2) { create(:user) }
   let!(:team) { create(:team, user: user) }
@@ -30,23 +30,6 @@ RSpec.describe 'チーム機能', type: :system do
       it 'チームのエリアが表示される' do
         expect(page).to have_content 'team[place]'
         expect(page).to have_content 'team2[place]'
-      end
-      it 'opinionフォームが表示される' do
-        expect(page).to have_field 'book[body]'
-      end
-      it 'Create Bookボタンが表示される' do
-        expect(page).to have_button 'Create Book'
-      end
-      it '投稿に成功する' do
-        fill_in 'book[title]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'book[body]', with: Faker::Lorem.characters(number: 20)
-        click_button 'Create Book'
-        expect(page).to have_content 'successfully'
-      end
-      it '投稿に失敗する' do
-        click_button 'Create Book'
-        expect(page).to have_content 'error'
-        expect(current_path).to eq('/books')
       end
     end
   end
