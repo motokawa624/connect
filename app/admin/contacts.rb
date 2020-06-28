@@ -10,9 +10,9 @@ ActiveAdmin.register Contact do
   #
   # or
   #
-  # permit_params do
-  #   permitted = [:email, :message]
+  permit_params do
+    permitted = [:email, :message]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
-  # end
+  end
 end

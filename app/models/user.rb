@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   # refileの記述
   attachment :profile_image
-  has_many :owner_teams, class_name: 'Team', foreign_key: 'owner_user_id'
+  has_many :owner_teams, class_name: 'Team', foreign_key: 'owner_user_id', dependent: :destroy
   has_many :teams, through: :belongs
 
   # いいねのアソシエーション
