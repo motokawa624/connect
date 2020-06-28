@@ -50,15 +50,15 @@ https://docs.google.com/spreadsheets/d/1GOdSAppRX0EeGDAbTtKwBdFE9tHEGjqEXr-7fRIk
 ・ github認証機能(Omniauth)<br>
 ・ フォロー・フォロワー機能（非同期）・一覧表示<br>
 ・ ユーザー間チャット機能（非同期）<br>
-<h4>チームについて</h4><br>
+<h4>チームについて</h4>
 ・ チーム所属機能<br>
 ・ 投稿時にタグを複数付与できる(acts-as-taggable-on)<br>
 ・ いいねを付けることができる(非同期通信)<br>
 ・ コメントをつけることができる(非同期通信)<br>
-<h4>管理者機能</h4><br>
+<h4>管理者機能</h4>
 ・ 管理者によるユーザーやチームの編集等(activeadmin)<br>
 ・ csv出力(activeadmin)<br>
-<h4>その他の機能</h4><br>
+<h4>その他の機能</h4>
 ・ ページネーション機能<br>
 ・ rubocopによるリーダブルコード<br>
 ・ rspecテスト機能<br>
