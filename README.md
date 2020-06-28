@@ -26,14 +26,14 @@ connectは、プログラミングスクール卒業生が継続して学習を�
 ・JavaScript/jQuery
 <h3>サーバサイド</h3>
 .Ruby-2.5.7
-.Ruby_on_rails-5.2.4.2
+.Ruby_on_rails-5.2.4.3
 <h3>テスト</h3>
-.RSpec-3.9.1(model/system)
+.RSpec-3.9.2(model/system)
 <h3>開発環境</h3>
 .Vagrant(2.2.4)
 <h3>本番環境</h3>
 ・AWS(EC2,nginx)
-・SQL mysql-0.5.3
+・SQL mysql-5.5.62
 
 ## 設計
 ### ワイヤーフレーム
@@ -42,8 +42,26 @@ https://app.diagrams.net/#G182aBT9t9BTSUVmR414lpv_DW_BdYxk6E
 ### ER図
 https://app.diagrams.net/#G1q76P8xzwoXN2qG14Bh_LQ6IGR5vPokxW
 
-### 機能一覧
+## 機能一覧
 https://docs.google.com/spreadsheets/d/1GOdSAppRX0EeGDAbTtKwBdFE9tHEGjqEXr-7fRIk6lw/edit#gid=0
+
+#ユーザについて
+・github認証機能(Omniauth)
+・フォロー・フォロワー機能（非同期）・一覧表示
+・ユーザー間チャット機能（非同期）
+#チームについて
+・チーム所属機能
+・投稿時にタグを複数付与できる(acts-as-taggable-on)
+・いいねを付けることができる(非同期通信)
+・コメントをつけることができる(非同期通信)
+#管理者機能
+・管理者によるユーザーやチームの編集等(activeadmin)
+・csv出力(activeadmin)
+#その他の機能
+・ページネーション機能
+・rubocopによるリーダブルコード 
+・rspecテスト機能
+・お問い合わせ機能（Action Mailer）
 
 
 
