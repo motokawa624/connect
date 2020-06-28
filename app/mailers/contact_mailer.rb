@@ -8,6 +8,6 @@ class ContactMailer < ApplicationMailer
   #
   def contact_mail(contact)
     @contact = contact
-    mail to: 'connectdwc24@gmail.com', subject: 'connect お問い合わせ'
+    mail to: ENV['MAIL_ADDRESS'], subject: 'connect お問い合わせ'
   end
 end
