@@ -46,22 +46,22 @@ https://app.diagrams.net/#G1q76P8xzwoXN2qG14Bh_LQ6IGR5vPokxW
 https://docs.google.com/spreadsheets/d/1GOdSAppRX0EeGDAbTtKwBdFE9tHEGjqEXr-7fRIk6lw/edit#gid=0
 
 #ユーザについて
-・github認証機能(Omniauth)
-・フォロー・フォロワー機能（非同期）・一覧表示
-・ユーザー間チャット機能（非同期）
-#チームについて
-・チーム所属機能
-・投稿時にタグを複数付与できる(acts-as-taggable-on)
-・いいねを付けることができる(非同期通信)
-・コメントをつけることができる(非同期通信)
-#管理者機能
-・管理者によるユーザーやチームの編集等(activeadmin)
-・csv出力(activeadmin)
-#その他の機能
-・ページネーション機能
-・rubocopによるリーダブルコード 
-・rspecテスト機能
-・お問い合わせ機能（Action Mailer）
+・github認証機能(Omniauth)<br>
+・フォロー・フォロワー機能（非同期）・一覧表示<br>
+・ユーザー間チャット機能（非同期）<br>
+#チームについて<br>
+・チーム所属機能<br>
+・投稿時にタグを複数付与できる(acts-as-taggable-on)<br>
+・いいねを付けることができる(非同期通信)<br>
+・コメントをつけることができる(非同期通信)<br>
+#管理者機能<br>
+・管理者によるユーザーやチームの編集等(activeadmin)<br>
+・csv出力(activeadmin)<br>
+#その他の機能<br>
+・ページネーション機能<br>
+・rubocopによるリーダブルコード<br> 
+・rspecテスト機能<br>
+・お問い合わせ機能（Action Mailer）<br>
 
 
 
