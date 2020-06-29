@@ -64,6 +64,7 @@ class User < ApplicationRecord
   end
 
   # github認証メソッド
+  # uidとproviderはNULL値が許可されず、組み合わせも一意でなければいけない
   def self.create_unique_string
     SecureRandom.uuid
   end

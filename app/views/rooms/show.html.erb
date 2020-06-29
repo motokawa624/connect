@@ -3,6 +3,7 @@
     <div class="col-md-12">
       <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
 
+      <!-- 非同期通信 -->
       <div class="line-bc">
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>

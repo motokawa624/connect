@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     unless @user.id == current_user.id
       @current_user_rooms.each do |cu|
         @user_user_rooms.each do |u|
+          # user_room内のroom_idが共通しているユーザーの変数を定義する。
           if cu.room_id == u.room_id
             @is_room = true
             @room_id = cu.room_id
