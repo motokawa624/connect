@@ -69,9 +69,12 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # ユーザー登録機能
 gem 'devise'
 
-# Githubログイン機能
+# SNSログイン機能
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 
 # レイアウト用gem
 gem 'bootstrap-sass', '~> 3.3.6'

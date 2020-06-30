@@ -19,6 +19,7 @@ module Connect
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
+    # アプリが置いてあるサーバーのシステムの時間を参照する様に設定する。
     config.active_record.default application_timezone = :local
   end
 end
