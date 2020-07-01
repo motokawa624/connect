@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[github]
+         :omniauthable, omniauth_providers: [:github, :facebook, :google_oauth2]
 
   validates :name, presence: true, length: { maximum: 20, minimum: 2 }
 
@@ -69,7 +69,9 @@ class User < ApplicationRecord
     SecureRandom.uuid
   end
 
-  def self.find_for_github_oauth(auth, _signed_in_resource = nil)
+  # oauthからデータを見つけてくる。
+  def self.find_for_oauth(auth, _signed_in_resource = nil)
+    # 認証実施済みユーザはそのままログイン
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     user ||= User.new(provider: auth.provider,
@@ -77,7 +79,7 @@ class User < ApplicationRecord
                       name: auth.info.name,
                       email: auth.info.email(auth),
                       password: Devise.friendly_token[0, 20])
-    user.save(validate: false)
+    user.save
     user
   end
 end

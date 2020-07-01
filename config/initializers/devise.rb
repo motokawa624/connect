@@ -15,6 +15,11 @@ Devise.setup do |config|
   else
     config.omniauth :github, ENV['GITHUB_ID'], ENV['GITHUB_SECRET'], scope: 'user,public_repo'
   end
+
+  # facebookログイン
+  config.omniauth :facebook, ENV['FACEBOOK_ID'],ENV['FACEBOOK_SECRET']
+  # googleログイン
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'],ENV['GOOGLE_CLIENT_SECRET']
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
