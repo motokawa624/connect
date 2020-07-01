@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
   before_action :screen_room, only: [:show]
 
   def create
+    # room及び子モデルのuser_roomをcreate
     @room = Room.create
     UserRoom.create(room_id: @room.id, user_id: current_user.id)
     user_room = UserRoom.new(room_params)
@@ -18,6 +19,7 @@ class RoomsController < ApplicationController
     # .notでカレントユーザー以外の一人を取得
     @user_room = @room.user_rooms.where.not(user_id: current_user.id).last
     @user = @user_room.user
+    # カレントユーザーに紐づいたチャットルームを探す。
     if UserRoom.where(user_id: current_user.id, room_id: @room.id).present?
       @chats = @room.chats
       @chat = Chat.new(room_id: @room.id)

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
+    # ログイン及び新規登録時は、必ずcollbackを参照させる
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
