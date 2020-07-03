@@ -34,5 +34,7 @@ Rails.application.routes.draw do
 
   get 'thanks' => 'contacts#thanks'
 
+  get 'search' => 'users#search'
+
   resources :contacts, only: %i[new create]
 end

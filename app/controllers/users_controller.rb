@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :screen_user, only: %i[edit update]
   def index
-    @users = User.page(params[:page]).reverse_order
+    @q = User.ransack(params[:q]) #検索オブジェクト作成
+    @users = @q.result(distinct: true).page(params[:page]).reverse_order
   end
 
   def show
@@ -47,6 +48,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @q = User.search(search_params)
+    @users = @q.result(distinct: true)
+  end
+
   private
 
   def user_params
@@ -55,5 +61,9 @@ class UsersController < ApplicationController
 
   def screen_user
     redirect_to user_path(current_user) unless params[:id].to_i == current_user.id
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
