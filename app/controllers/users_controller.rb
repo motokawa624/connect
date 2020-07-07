@@ -4,8 +4,14 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :screen_user, only: %i[edit update]
   def index
-    @q = User.ransack(params[:q]) #検索オブジェクト作成
-    @users = @q.result(distinct: true).page(params[:page]).reverse_order
+    if params[:q] != nil
+       params[:q]['name_cont_any'] = params[:q]['name_cont_any'].split(/[\p{blank}\s]+/)
+       @user = User.ransack(params[:q])
+       @users = @user.result
+    else
+       @q = User.ransack(params[:q]) #検索オブジェクト作成
+       @users = @q.result(distinct: true).page(params[:page]).reverse_order
+    end
   end
 
   def show
